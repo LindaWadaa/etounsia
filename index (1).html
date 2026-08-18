@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التونسية — Saveurs Authentiques de Tunisie</title>
+<meta name="description" content="التونسية — Huile d'olive vierge extra et Harissa Nabeulia 100% tunisiennes. Premiere pression a froid, tradition et authenticite depuis les terres de Nabeul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --paper:#fbf7f2;
+    --red:#bc020e;
+    --red-deep:#7a0009;
+    --red-soft:#f5e2e0;
+    --black:#161311;
+    --ink:#2a221f;
+    --gold:#b08a3e;
+    --line:#e9e0d6;
+    --maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .arabic{font-family:'Aref Ruqaa',serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    font-size:12.5px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    font-family:'Jost',sans-serif;
+    font-size:13.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    border-radius:2px;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .btn-red{background:var(--red);color:var(--white);border-color:var(--red);}
+  .btn-red:hover{background:var(--red-deep);border-color:var(--red-deep);}
+  .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+  .btn-outline-white{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6);}
+  .btn-outline-white:hover{background:var(--white);color:var(--black);border-color:var(--white);}
+
+  /* olive branch divider (signature motif) */
+  .branch-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto;}
+  .branch-divider svg{width:120px;height:24px;}
+  .branch-divider.on-dark svg path,.branch-divider.on-dark svg circle{stroke:var(--gold);}
+  .branch-divider svg path,.branch-divider svg circle{stroke:var(--red);}
+
+  /* ===== Announcement bar ===== */
+  .announce{
+    background:var(--black);color:#f2ece5;
+    text-align:center;font-size:12px;letter-spacing:.14em;
+    padding:9px 12px;text-transform:uppercase;font-weight:500;
+  }
+  .announce span{color:var(--gold);}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 32px;max-width:var(--maxw);margin:0 auto;
+  }
+  .logo-mark{display:flex;align-items:center;gap:12px;}
+  .logo-mark img{height:56px;width:56px;object-fit:contain;border-radius:10px;}
+  .logo-word{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--red);letter-spacing:.03em;line-height:1;}
+  .logo-word small{display:block;font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.3em;color:var(--black);font-weight:500;text-transform:uppercase;margin-top:3px;}
+  .nav-links{display:flex;gap:38px;}
+  .nav-links a{
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+    color:var(--black);position:relative;padding:6px 0;
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:12px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--black);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:var(--paper);
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
+    min-height:640px;padding-top:40px;padding-bottom:40px;
+  }
+  .hero-text .eyebrow{margin-bottom:22px;}
+  .hero-text h1{
+    font-size:clamp(42px,5.2vw,68px);
+    line-height:1.04;color:var(--black);margin-bottom:22px;
+  }
+  .hero-text h1 em{font-style:italic;color:var(--red);}
+  .hero-text p{
+    font-size:17px;line-height:1.7;color:#514a45;max-width:440px;margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
+  .hero-badges{display:flex;gap:28px;flex-wrap:wrap;}
+  .hero-badges div{font-size:12px;letter-spacing:.05em;color:var(--black);display:flex;align-items:center;gap:8px;font-weight:500;}
+  .hero-badges div .dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;}
+  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-visual::before{
+    content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(188,2,14,.08) 0%,rgba(188,2,14,0) 70%);
+    z-index:0;
+  }
+  .hero-visual img{
+    position:relative;
+    z-index:1;
+    width:clamp(230px,30vw,360px);
+    aspect-ratio:3/5;
+    object-fit:contain;
+    background:linear-gradient(180deg,#fff,#f8f2ea);
+    border:1px solid rgba(176,138,62,.35);
+    border-radius:140px 140px 28px 28px;
+    padding:14px;
+    filter:drop-shadow(0 34px 42px rgba(0,0,0,.2));
+  }
+  .hero-ring{
+    position:absolute;width:500px;height:500px;border:1px solid var(--gold);
+    border-radius:50%;opacity:.35;z-index:0;
+  }
+
+  /* ===== Values strip ===== */
+  .values{
+    background:var(--black);padding:34px 0;
+  }
+  .values .wrap{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;
+  }
+  .value-item{
+    display:flex;align-items:center;gap:14px;color:#efe7de;flex:1;min-width:210px;
+  }
+  .value-item svg{flex-shrink:0;width:30px;height:30px;stroke:var(--gold);}
+  .value-item .t{font-size:13.5px;font-weight:600;letter-spacing:.03em;}
+  .value-item .s{font-size:11.5px;color:#a89e92;margin-top:2px;}
+
+  /* ===== Section heading generic ===== */
+  .section{padding:104px 0;}
+  .section.alt{background:var(--paper);}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+  .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
+  .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
+  .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
+
+  /* ===== Products ===== */
+  .product-block{
+    display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+    margin-bottom:130px;
+  }
+  .product-block:last-child{margin-bottom:0;}
+  .product-block.reverse{direction:rtl;}
+  .product-block.reverse > *{direction:ltr;}
+  .p-visual{
+    position:relative;display:flex;justify-content:center;align-items:center;
+    background:linear-gradient(160deg,var(--paper),#f4ede4);
+    border-radius:4px;padding:50px;min-height:480px;
+  }
+  .p-visual img{max-height:420px;width:auto;filter:drop-shadow(0 30px 34px rgba(0,0,0,.15));}
+  .p-tag{
+    position:absolute;top:26px;left:26px;z-index:3;
+    background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;font-weight:600;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+  }
+  .p-content .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:20px;margin-bottom:10px;display:block;}
+  .p-content h3{font-size:clamp(30px,3.6vw,42px);color:var(--black);margin-bottom:18px;line-height:1.1;}
+  .p-content p.desc{color:#5c534d;font-size:15.5px;line-height:1.8;margin-bottom:26px;max-width:480px;}
+  .p-facts{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:30px;}
+  .p-facts div{
+    font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
+    color:var(--black);border:1px solid var(--line);padding:9px 16px;border-radius:2px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .p-facts div::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;}
+  .p-formats{margin-bottom:32px;}
+  .p-formats .label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8078;font-weight:600;margin-bottom:12px;}
+  .format-pills{display:flex;gap:10px;flex-wrap:wrap;}
+  .format-pills span{
+    padding:9px 18px;border:1.5px solid var(--black);font-size:13px;font-weight:600;
+    border-radius:2px;color:var(--black);letter-spacing:.02em;
+  }
+  .format-pills span.hi{background:var(--black);color:var(--white);}
+  .p-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ===== Formats section ===== */
+  .formats-choice{
+    position:relative;
+    background:linear-gradient(180deg,#f8f4ee 0%,#f2e9dd 100%);
+    padding:92px 0;
+    border-top:1px solid #eadfce;
+    border-bottom:1px solid #eadfce;
+    overflow:hidden;
+  }
+  .formats-choice::before,
+  .formats-choice::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .formats-choice::before{
+    width:260px;
+    height:260px;
+    left:-120px;
+    top:-100px;
+    background:radial-gradient(circle,rgba(188,2,14,.09) 0%,rgba(188,2,14,0) 74%);
+  }
+  .formats-choice::after{
+    width:280px;
+    height:280px;
+    right:-120px;
+    bottom:-120px;
+    background:radial-gradient(circle,rgba(176,138,62,.2) 0%,rgba(176,138,62,0) 72%);
+  }
+  .formats-panel{
+    position:relative;
+    z-index:1;
+    background:rgba(255,255,255,.78);
+    border:1px solid #e5d9c9;
+    border-radius:18px;
+    padding:34px;
+  }
+  .formats-head{
+    text-align:left;
+    margin:0 0 28px;
+    max-width:none;
+  }
+  .formats-head .eyebrow{justify-content:flex-start;}
+  .formats-head h2{
+    margin-bottom:12px;
+    font-size:clamp(30px,3.8vw,44px);
+  }
+  .formats-head p{
+    max-width:680px;
+    color:#5c534d;
+  }
+  .formats-list{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-bottom:24px;
+  }
+  .format-tile{
+    background:#fff;
+    border:1px solid #e8dccb;
+    border-radius:14px;
+    padding:18px 16px;
+  }
+  .format-tile b{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+    line-height:.95;
+    color:var(--red);
+    margin-bottom:10px;
+  }
+  .format-tile h3{
+    font-family:'Jost',sans-serif;
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--black);
+    margin-bottom:8px;
+  }
+  .format-tile p{
+    font-size:13.5px;
+    line-height:1.65;
+    color:#5f5550;
+  }
+  .formats-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    border-top:1px solid #ebdfd0;
+    padding-top:18px;
+  }
+  .formats-footer p{
+    font-size:13px;
+    color:#6c6158;
+    margin:0;
+    letter-spacing:.03em;
+  }
+
+  /* ===== Story ===== */
+  .story{background:var(--red);color:var(--white);position:relative;overflow:hidden;}
+  .story::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    border:1px solid rgba(255,255,255,.15);border-radius:50%;
+  }
+  .story .wrap{
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;
+  }
+  .story .eyebrow{color:#ffd9d4;}
+  .story .eyebrow::before{background:#ffd9d4;}
+  .story h2{font-size:clamp(32px,4vw,48px);margin:20px 0 24px;line-height:1.12;}
+  .story p{font-size:15.5px;line-height:1.85;color:#ffe2df;max-width:520px;margin-bottom:16px;}
+  .story-stats{display:flex;gap:50px;margin-top:34px;flex-wrap:wrap;}
+  .story-stats div b{display:block;font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:700;}
+  .story-stats div span{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#ffd9d4;}
+  .story-img{position:relative;}
+  .story-img img{border-radius:4px;width:100%;height:520px;object-fit:contain;background:#a80a16;filter:saturate(1.02);}
+  .story-img .frame{
+    position:absolute;inset:22px -22px -22px 22px;border:1.5px solid rgba(255,255,255,.5);z-index:-1;
+  }
+
+  /* ===== Order form ===== */
+  .order-box{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:30px;
+    margin-top:70px;
+  }
+  .order-box h3{font-size:clamp(26px,3.2vw,34px);margin-bottom:8px;color:var(--black);}
+  .order-box p{color:#5c534d;font-size:14.5px;line-height:1.7;margin-bottom:22px;}
+  .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .order-field{display:flex;flex-direction:column;gap:7px;}
+  .order-field label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5c534d;font-weight:600;}
+  .order-field input,.order-field select,.order-field textarea{
+    border:1px solid #d9cec2;
+    border-radius:2px;
+    padding:12px 13px;
+    font-family:'Jost',sans-serif;
+    font-size:14px;
+    color:var(--black);
+    background:#fff;
+  }
+  .order-field textarea{min-height:110px;resize:vertical;}
+  .order-field.full{grid-column:1 / -1;}
+  .order-actions{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .order-note{font-size:12.5px;color:#786f67;}
+  .order-status{margin-top:12px;font-size:13px;font-weight:500;}
+  .order-status.ok{color:#1f7a3e;}
+  .order-status.err{color:#9e1b1b;}
+
+  /* ===== CTA band ===== */
+  .cta-band{
+    background:var(--paper);padding:90px 0;text-align:center;
+  }
+  .cta-band h2{font-size:clamp(28px,3.6vw,40px);color:var(--black);margin:18px 0 16px;}
+  .cta-band p{color:#5c534d;max-width:520px;margin:0 auto 34px;font-size:15.5px;line-height:1.7;}
+  .cta-band .btn-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .cta-eyebrow-center{justify-content:center;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--black);color:#cfc6bb;padding-top:80px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;padding-bottom:60px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand img{height:64px;margin-bottom:18px;}
+  .footer-brand p{font-size:13.5px;line-height:1.8;color:#a89e92;max-width:280px;}
+  .footer-col h4{
+    color:var(--white);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    margin-bottom:20px;font-weight:600;
+  }
+  .footer-col ul li{margin-bottom:12px;}
+  .footer-col ul li a{font-size:13.5px;color:#a89e92;transition:color .2s;}
+  .footer-col ul li a:hover{color:var(--gold);}
+  .social-row{display:flex;gap:12px;margin-top:20px;}
+  .social-row a{
+    width:38px;height:38px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;
+  }
+  .social-row a:hover{background:var(--red);border-color:var(--red);}
+  .social-row svg{width:16px;height:16px;stroke:#efe7de;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;padding:26px 0;
+    font-size:12px;color:#8a8078;flex-wrap:wrap;gap:10px;
+  }
+  .footer-bottom a{color:#8a8078;}
+  .footer-bottom a:hover{color:var(--gold);}
+
+  /* ===== Floating WhatsApp ===== */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    width:58px;height:58px;border-radius:50%;background:#1fae52;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,.25);
+    animation:pulse 2.6s infinite;
+  }
+  .wa-float svg{width:28px;height:28px;fill:#fff;}
+  @keyframes pulse{
+    0%{box-shadow:0 10px 26px rgba(0,0,0,.25),0 0 0 0 rgba(31,174,82,.5);}
+    70%{box-shadow:0 10px 26px rgba(0,0,0,.25),0 0 0 14px rgba(31,174,82,0);}
+    100%{box-shadow:0 10px 26px rgba(0,0,0,.25),0 0 0 0 rgba(31,174,82,0);}
+  }
+
+  @media(max-width:960px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero .wrap{grid-template-columns:1fr;text-align:center;padding-top:20px;}
+    .hero-text p{margin-left:auto;margin-right:auto;}
+    .hero-actions,.hero-badges{justify-content:center;}
+    .hero-visual{order:-1;}
+    .hero-ring{width:340px;height:340px;}
+    .hero-visual::before{width:300px;height:300px;}
+    .product-block{grid-template-columns:1fr;gap:36px;}
+    .product-block.reverse{direction:ltr;}
+    .p-visual{min-height:360px;padding:30px 24px;}
+    .p-visual img{max-height:300px;}
+    .p-tag{top:16px;left:16px;}
+    .story .wrap{grid-template-columns:1fr;}
+    .story-img{order:-1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .formats-panel{padding:28px 24px;}
+    .formats-list{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px;}
+    .section{padding:70px 0;}
+    .btn{width:100%;justify-content:center;}
+    .hero-actions,.p-actions,.order-actions,.cta-band .btn-row{width:100%;}
+    .hero-actions .btn,.p-actions .btn,.order-actions .btn,.cta-band .btn-row .btn{width:100%;}
+    .hero-badges{gap:10px;}
+    .hero-badges div{font-size:11px;}
+    .p-visual{min-height:285px;padding:20px 16px;}
+    .p-visual img{max-height:220px;width:100%;}
+    .p-tag{top:12px;left:12px;font-size:10.5px;padding:6px 10px;}
+    .formats-choice{padding:70px 0;}
+    .formats-panel{padding:22px 16px;border-radius:14px;}
+    .formats-head{text-align:center;}
+    .formats-head .eyebrow{justify-content:center;}
+    .formats-list{grid-template-columns:1fr;gap:10px;}
+    .format-tile{padding:16px 14px;}
+    .format-tile b{font-size:34px;margin-bottom:8px;}
+    .format-tile h3{font-size:12px;}
+    .format-tile p{font-size:13px;}
+    .formats-footer{padding-top:14px;}
+    .formats-footer p{font-size:12px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .values .wrap{flex-direction:column;}
+    .story-stats{gap:30px;}
+    .order-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">Livraison dans toute la Tunisie 🇹🇳 &nbsp;•&nbsp; <span>Produits 100% Tunisiens</span> &nbsp;•&nbsp; Première pression à froid</div>
+
+<header>
+  <nav class="nav">
+    <a href="#accueil" class="logo-mark">
+      <img src="logo.jpeg" alt="التونسية">
+      <span class="logo-word">التونسية<small>Saveurs de Tunisie</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#produits">Nos Produits</a></li>
+      <li><a href="#formats">Formats</a></li>
+      <li><a href="#histoire">Notre Histoire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#commande" class="btn btn-red">Commander</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow">Depuis les terres de Tunisie</span>
+      <h1>L'authenticité<br>tunisienne, <em>en&nbsp;bouteille.</em></h1>
+      <p>Huile d'olive vierge extra et harissa nabeulia, préparées selon les traditions de nos grands-mères, sans additifs, directement des oliveraies et des marchés de Tunisie jusqu'à votre table.</p>
+      <div class="hero-actions">
+        <a href="#produits" class="btn btn-red">Découvrir nos produits</a>
+        <a href="#histoire" class="btn btn-outline">Notre histoire</a>
+      </div>
+      <div class="hero-badges">
+        <div><span class="dot"></span>Première pression à froid</div>
+        <div><span class="dot"></span>Sans additifs ni conservateurs</div>
+        <div><span class="dot"></span>Récolte & mise en pot artisanales</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-ring"></div>
+      <img src="logo.jpeg" alt="Logo التونسية">
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="wrap">
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 2C8 6 5 10 5 14a7 7 0 0014 0c0-4-3-8-7-12z"/></svg>
+      <div><div class="t">100% Tunisien</div><div class="s">Cultivé et préparé en Tunisie</div></div>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <div><div class="t">Première pression à froid</div><div class="s">Extraction mécanique uniquement</div></div>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+      <div><div class="t">Recette traditionnelle</div><div class="s">Un savoir-faire transmis</div></div>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 12l3-3 4 4 8-8 3 3"/></svg>
+      <div><div class="t">Qualité contrôlée</div><div class="s">Chaque lot est sélectionné</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="produits">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Nos Produits</span>
+      <h2>Deux essentiels, préparés avec exigence</h2>
+      <p>Nous commençons avec ce qu'il y a de plus précieux dans la cuisine tunisienne : l'huile d'olive et la harissa. Chaque produit porte l'empreinte de nos régions.</p>
+    </div>
+
+    <!-- Product 1: Olive Oil -->
+    <div class="product-block">
+      <div class="p-visual">
+        <span class="p-tag">Best-seller</span>
+        <img src="oil.jpeg" alt="Huile d'olive vierge extra التونسية">
+      </div>
+      <div class="p-content">
+        <span class="arabic-tag">زيت زيتون بكر ممتاز</span>
+        <h3>Huile d'Olive Vierge Extra</h3>
+        <p class="desc">Issue d'une première pression à froid, notre huile d'olive révèle un fruité intense et un équilibre parfait entre amertume et piquant. Récoltée à maturité dans les oliveraies du nord de la Tunisie, elle est mise en bouteille sans aucun traitement chimique.</p>
+        <div class="p-facts">
+          <div>Acidité &lt; 0,3%</div>
+          <div>Extraction mécanique</div>
+          <div>Origine Tunisie</div>
+        </div>
+        <div class="p-formats">
+          <div class="label">Formats disponibles</div>
+          <div class="format-pills">
+            <span class="hi">1 Litre</span>
+            <span>10 Litres</span>
+            <span>20 Litres</span>
+          </div>
+        </div>
+        <div class="p-actions">
+          <a href="#commande" class="btn btn-red">Commander ce produit</a>
+          <a href="https://wa.me/21622155054?text=Bonjour%2C%20je%20souhaite%20commander%20de%20l%27huile%20d%27olive%20التونسية" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp rapide</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2: Harissa -->
+    <div class="product-block reverse">
+      <div class="p-visual">
+        <span class="p-tag">Fait maison</span>
+        <img src="harissa.jpeg" alt="Harissa Nabeulia التونسية">
+      </div>
+      <div class="p-content">
+        <span class="arabic-tag">هريسة نابلية</span>
+        <h3>Harissa Nabeulia</h3>
+        <p class="desc">Préparée selon la recette traditionnelle de Nabeul, notre harissa marie piment rouge sélectionné, ail et épices torréfiées pour un goût authentique, relevé juste comme il faut. Aucun colorant, aucun conservateur — que du naturel.</p>
+        <div class="p-facts">
+          <div>Piment 100% naturel</div>
+          <div>Sans colorant</div>
+          <div>Recette de Nabeul</div>
+        </div>
+        <div class="p-formats">
+          <div class="label">Formats disponibles</div>
+          <div class="format-pills">
+            <span class="hi">Pot 350g</span>
+            <span>Pot 700g</span>
+            <span>Sur commande</span>
+          </div>
+        </div>
+        <div class="p-actions">
+          <a href="#commande" class="btn btn-red">Commander ce produit</a>
+          <a href="https://wa.me/21622155054?text=Bonjour%2C%20je%20souhaite%20commander%20de%20la%20harissa%20Nabeulia%20التونسية" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp rapide</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-box" id="commande">
+      <h3>Passer une commande</h3>
+      <p>Remplissez ce formulaire. En cliquant sur envoyer, votre commande est transmise automatiquement.</p>
+      <form id="orderForm">
+        <div class="order-grid">
+          <div class="order-field">
+            <label for="nom">Nom complet</label>
+            <input id="nom" name="Nom" type="text" required>
+          </div>
+          <div class="order-field">
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" required>
+          </div>
+          <div class="order-field">
+            <label for="tel">Telephone</label>
+            <input id="tel" name="Telephone" type="tel" required>
+          </div>
+          <div class="order-field">
+            <label for="produit">Produit</label>
+            <select id="produit" name="Produit" required>
+              <option value="">Choisir un produit</option>
+              <option>Huile d'Olive Vierge Extra</option>
+              <option>Harissa Nabeulia</option>
+            </select>
+          </div>
+          <div class="order-field">
+            <label for="format">Format</label>
+            <select id="format" name="Format" required>
+              <option value="">Choisir un format</option>
+              <option>1 Litre</option>
+              <option>10 Litres</option>
+              <option>20 Litres</option>
+              <option>Pot 350g</option>
+              <option>Pot 700g</option>
+            </select>
+          </div>
+          <div class="order-field">
+            <label for="qte">Quantite</label>
+            <input id="qte" name="Quantite" type="number" min="1" value="1" required>
+          </div>
+          <div class="order-field">
+            <label for="lieu">Lieu de livraison</label>
+            <input id="lieu" name="Lieu" type="text" required>
+          </div>
+          <div class="order-field full">
+            <label for="msg">Message</label>
+            <textarea id="msg" name="Message" placeholder="Ajoutez ici une precision sur votre commande..."></textarea>
+          </div>
+        </div>
+        <div class="order-actions">
+          <button class="btn btn-red" id="orderSubmitBtn" type="submit">Envoyer la commande</button>
+          <a href="https://wa.me/21622155054" class="btn btn-outline" target="_blank" rel="noopener">Commander via WhatsApp</a>
+        </div>
+        <p class="order-status" id="orderStatus" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="formats-choice" id="formats">
+  <div class="wrap">
+    <div class="formats-panel">
+      <div class="sec-head formats-head">
+        <span class="eyebrow">Formats disponibles</span>
+        <h2>Choisissez rapidement la contenance qui vous convient</h2>
+        <p>Une lecture simple, sans surcharge: choisissez votre volume selon votre consommation, puis contactez-nous directement pour valider votre commande.</p>
+      </div>
+      <div class="formats-list">
+        <article class="format-tile">
+          <b>1L</b>
+          <h3>Usage maison</h3>
+          <p>Parfait pour la cuisine quotidienne et les petites familles.</p>
+        </article>
+        <article class="format-tile">
+          <b>10L</b>
+          <h3>Usage familial</h3>
+          <p>Idéal pour une consommation régulière sur plusieurs semaines.</p>
+        </article>
+        <article class="format-tile">
+          <b>20L</b>
+          <h3>Usage pro</h3>
+          <p>Conçu pour restaurateurs, snacks et besoins intensifs.</p>
+        </article>
+      </div>
+      <div class="formats-footer">
+        <p>Livraison disponible dans toute la Tunisie pour particuliers et professionnels.</p>
+        <a href="https://wa.me/21622155054?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20les%20formats%20professionnels" class="btn btn-red" target="_blank" rel="noopener">Demander les formats professionnels</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="histoire">
+  <div class="wrap">
+    <div class="story-img">
+      <div class="frame"></div>
+      <img src="harissa.jpeg" alt="Produits tunisiens authentiques">
+    </div>
+    <div>
+      <span class="eyebrow">Notre Histoire</span>
+      <h2>Née d'un attachement profond à la terre tunisienne</h2>
+      <p>التونسية est née d'une conviction simple : les meilleurs produits sont ceux qui respectent le temps, le geste et la terre. Nos oliviers sont cultivés depuis des générations, et notre harissa suit la recette transmise de mère en fille à Nabeul.</p>
+      <p>Chaque bouteille, chaque pot que nous mettons sur votre table porte cette histoire — celle d'un savoir-faire tunisien authentique, sans compromis sur la qualité.</p>
+      <div class="story-stats">
+        <div><b>100%</b><span>Origine Tunisie</span></div>
+        <div><b>0</b><span>Additif ajouté</span></div>
+        <div><b>2</b><span>Produits, une exigence</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <div class="branch-divider">
+      <svg viewBox="0 0 120 24" fill="none"><path d="M0 12h50M70 12h50" stroke-width="1.2"/><circle cx="60" cy="12" r="3" stroke-width="1.2"/><path d="M55 12c-2-4-8-4-10 0M65 12c2-4 8-4 10 0" stroke-width="1.2"/></svg>
+    </div>
+    <span class="eyebrow cta-eyebrow-center">Contactez-nous</span>
+    <h2>Une question, une commande en gros ?</h2>
+    <p>Notre équipe répond rapidement pour toute commande, demande de devis professionnel ou question sur nos produits.</p>
+    <div class="btn-row">
+      <a href="https://wa.me/21622155054" class="btn btn-red" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+      <a href="mailto:wdaalinda424@gmail.com" class="btn btn-outline">wdaalinda424@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.jpeg" alt="التونسية">
+        <p>Huile d'olive et harissa 100% tunisiennes, préparées avec exigence dans le respect des traditions du pays.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M15 3h-2a4 4 0 00-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://wa.me/21622155054" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1121 11.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#produits">Nos Produits</a></li>
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#histoire">Notre Histoire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Produits</h4>
+        <ul>
+          <li><a href="#produits">Huile d'Olive Vierge Extra</a></li>
+          <li><a href="#produits">Harissa Nabeulia</a></li>
+          <li><a href="#formats">Formats Professionnels</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Nabeul, Beni Khiar</a></li>
+          <li><a href="mailto:wdaalinda424@gmail.com">wdaalinda424@gmail.com</a></li>
+          <li><a href="https://wa.me/21622155054" target="_blank" rel="noopener">+216 22 155 054</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 التونسية — Tous droits réservés</span>
+      <span><a href="#">Mentions légales</a> &nbsp;·&nbsp; <a href="#">Livraison</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/21622155054" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4c1.5.8 3.3 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.9 14.2c-.2.6-1.4 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.1.5.2.6.3.1.2.1.9-.1 1.5z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const links = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText += open ? '' : 'position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 32px;gap:18px;border-bottom:1px solid #e9e0d6;';
+  });
+
+  // EmailJS setup
+  const EMAILJS_PUBLIC_KEY = 'NAJ4Veir8G-lfdliB';
+  const EMAILJS_SERVICE_IDS = ['service_tcnc70p'];
+  const EMAILJS_TEMPLATE_ID = 'template_4w7t2b6';
+  const ORDER_RECEIVER_EMAIL = 'wdaalinda424@gmail.com';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  const orderForm = document.getElementById('orderForm');
+  const orderStatus = document.getElementById('orderStatus');
+  const orderSubmitBtn = document.getElementById('orderSubmitBtn');
+
+  const formatPrices = {
+    '1 Litre': 35,
+    '10 Litres': 320,
+    '20 Litres': 620,
+    'Pot 350g': 8,
+    'Pot 700g': 14
+  };
+
+  function buildOrderId() {
+    const now = new Date();
+    const date = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+    const rand = Math.floor(1000 + Math.random() * 9000);
+    return `ETO-${date}-${rand}`;
+  }
+
+  async function sendOrderWithFallback(templateParams) {
+    let lastError = null;
+
+    for (const serviceId of EMAILJS_SERVICE_IDS) {
+      try {
+        const response = await emailjs.send(serviceId, EMAILJS_TEMPLATE_ID, templateParams, {
+          publicKey: EMAILJS_PUBLIC_KEY
+        });
+        return { response, serviceId };
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError;
+  }
+
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    orderStatus.textContent = '';
+    orderStatus.className = 'order-status';
+    orderSubmitBtn.disabled = true;
+    orderSubmitBtn.textContent = 'Envoi en cours...';
+
+    const customerName = document.getElementById('nom').value.trim();
+    const customerEmail = document.getElementById('email').value.trim();
+    const customerPhone = document.getElementById('tel').value.trim();
+    const product = document.getElementById('produit').value;
+    const format = document.getElementById('format').value;
+    const quantity = Number(document.getElementById('qte').value || 1);
+    const customerAddress = document.getElementById('lieu').value.trim();
+    const message = document.getElementById('msg').value.trim();
+
+    const orderId = buildOrderId();
+    const unitPrice = formatPrices[format] || 0;
+    const total = unitPrice * quantity;
+    const detailsLine = `${product} | ${format} | Qte: ${quantity} | PU: ${unitPrice} TND | Sous-total: ${total} TND`;
+    const items = message ? `${detailsLine}\nNote client: ${message}` : detailsLine;
+
+    const templateParams = {
+      subject: `Nouvelle commande #${orderId}`,
+      order_id: orderId,
+      to_email: ORDER_RECEIVER_EMAIL,
+      from_name: customerName,
+      reply_to: customerEmail,
+      customer_name: customerName,
+      customer_email: customerEmail,
+      customer_phone: customerPhone,
+      customer_address: customerAddress,
+      items,
+      total: total.toFixed(2)
+    };
+
+    try {
+      const sent = await sendOrderWithFallback(templateParams);
+      orderStatus.textContent = 'Commande envoyee avec succes.';
+      orderStatus.classList.add('ok');
+      orderForm.reset();
+      document.getElementById('qte').value = 1;
+    } catch (error) {
+      const errorCode = error && error.status ? `Code ${error.status}` : 'Code inconnu';
+      const errorText = error && error.text ? error.text : 'Aucune precision retournee';
+      const hint = (errorText || '').toLowerCase().includes('service id not found')
+        ? ' Verifiez le Service ID exact dans EmailJS (attention aux caracteres 0/O) puis remplacez la valeur dans EMAILJS_SERVICE_IDS.'
+        : '';
+      orderStatus.textContent = `Echec de l envoi (${errorCode}). ${errorText}.${hint}`;
+      orderStatus.classList.add('err');
+      console.error('EmailJS error:', error);
+    } finally {
+      orderSubmitBtn.disabled = false;
+      orderSubmitBtn.textContent = 'Envoyer la commande';
+    }
+  });
+</script>
+
+</body>
+</html>
