@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zhourat - التونسية</title>
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --white:#ffffff;--paper:#fbf7f2;--red:#bc020e;--red-deep:#7a0009;
-    --black:#161311;--ink:#2a221f;--gold:#b08a3e;--line:#e9e0d6;--maxw:1240px;
-  }
+  :root{--white:#ffffff;--paper:#fbf7f2;--red:#bc020e;--red-deep:#7a0009;--black:#161311;--ink:#2a221f;--gold:#b08a3e;--line:#e9e0d6;--maxw:1240px;}
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -27,10 +25,8 @@
   .btn-red:hover{background:var(--red-deep);border-color:var(--red-deep);}
   .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
   .btn-outline:hover{background:var(--black);color:var(--white);}
-
   .announce{background:var(--black);color:#f2ece5;text-align:center;font-size:12px;letter-spacing:.14em;padding:9px 12px;text-transform:uppercase;font-weight:500;}
   .announce span{color:var(--gold);}
-
   header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:var(--maxw);margin:0 auto;}
   .logo-mark{display:flex;align-items:center;gap:12px;}
@@ -76,11 +72,53 @@
   .add-cart-btn:hover{background:var(--red-deep);transform:scale(1.1);box-shadow:0 6px 16px rgba(188,2,14,.4);}
   .add-cart-btn .plus{position:absolute;bottom:-1px;right:-1px;background:var(--black);color:#fff;width:18px;height:18px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;}
 
+  .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:220;}
+  .cart-overlay.open{opacity:1;pointer-events:auto;}
+  .cart-drawer{position:fixed;top:0;right:0;width:min(420px,100vw);height:100vh;background:#fff;border-left:1px solid #e9e0d6;box-shadow:-14px 0 28px rgba(0,0,0,.12);z-index:230;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column;}
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{display:flex;align-items:center;justify-content:space-between;padding:18px 18px;border-bottom:1px solid #eee3d7;}
+  .cart-head h3{font-size:28px;color:var(--black);}
+  .cart-close{border:none;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--black);}
+  .cart-items{padding:14px 16px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:10px;}
+  .cart-empty{border:1px dashed #dacdbd;border-radius:10px;padding:14px;color:#74695f;font-size:13px;text-align:center;}
+  .cart-item{border:1px solid #eadfce;border-radius:10px;padding:10px;}
+  .cart-item-title{font-size:14px;font-weight:600;color:#1f1a17;margin-bottom:2px;}
+  .cart-item-sub{font-size:12px;color:#7b7067;margin-bottom:8px;}
+  .cart-item-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .cart-qty{display:inline-flex;align-items:center;border:1px solid #d9cec2;border-radius:8px;overflow:hidden;}
+  .cart-qty button{border:none;background:#f8f2ea;width:28px;height:28px;cursor:pointer;font-weight:700;}
+  .cart-qty span{width:34px;text-align:center;font-size:13px;font-weight:600;}
+  .cart-remove{border:none;background:none;color:#9e1b1b;font-size:12px;cursor:pointer;}
+  .cart-foot{border-top:1px solid #eee3d7;padding:14px 16px 18px;background:#fff;}
+  .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .cart-total span{font-size:12px;color:#7a6f66;text-transform:uppercase;letter-spacing:.11em;font-weight:600;}
+  .cart-total strong{font-size:26px;color:var(--black);font-family:'Cormorant Garamond',serif;}
+  .cart-actions{display:flex;flex-direction:column;gap:10px;}
+  .cart-actions .btn{width:100%;justify-content:center;}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:300;}
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .order-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-45%) scale(.95);width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 40px);overflow-y:auto;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px 30px;box-shadow:0 24px 48px rgba(0,0,0,.22);z-index:310;opacity:0;pointer-events:none;transition:all .28s cubic-bezier(0.16,1,0.3,1);}
+  .order-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);}
+  .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+  .modal-head h3{font-size:26px;color:var(--black);line-height:1.2;}
+  .modal-sub{font-size:13px;color:#6c6158;margin-top:4px;}
+  .modal-close{border:none;background:none;font-size:28px;line-height:1;cursor:pointer;color:var(--black);padding:0 4px;}
+  .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .order-field{display:flex;flex-direction:column;gap:7px;}
+  .order-field label{font-family:'Aref Ruqaa',serif;font-size:19px;font-weight:700;color:var(--red);letter-spacing:0;margin-bottom:2px;}
+  .order-field input,.order-field select{border:1px solid #d9cec2;border-radius:8px;padding:12px 13px;font-family:'Jost',sans-serif;font-size:14px;color:var(--black);background:#fff;}
+  .order-field input:focus,.order-field select:focus{outline:none;border-color:var(--red);}
+  .order-actions{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .order-status{margin-top:12px;font-size:13px;font-weight:500;}
+  .order-status.ok{color:#1f7a3e;}
+  .order-status.err{color:#9e1b1b;}
+  @media(max-width:600px){.order-grid{grid-template-columns:1fr;}}
+
   footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
   footer a{color:var(--gold);}
   @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}.product-grid{grid-template-columns:repeat(2,1fr);}.product-media{height:180px;}.product-media img{max-height:130px;}}
-
-  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:14px 14px 16px;}.product-body h3{font-size:20px;-webkit-line-clamp:unset;}.product-body .desc{-webkit-line-clamp:unset;}.product-price{font-size:30px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:14px 14px 16px;}.product-body h3{font-size:20px;-webkit-line-clamp:unset;}.product-body .desc{-webkit-line-clamp:unset;}.product-price{font-size:30px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}.cart-drawer{width:100vw;}}
 </style>
 </head>
 <body>
@@ -101,10 +139,10 @@
       <li><a href="jus.html">Jus</a></li>
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
-      <div class="nav-cta">
-        <a href="index.html#produits" class="cart-icon-btn" aria-label="Panier">🛒</a>
-        <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
+    <div class="nav-cta">
+      <button class="cart-icon-btn" id="openCartBtn" type="button" aria-label="Panier">🛒<span class="cart-count-badge" id="cartCountBadge">0</span></button>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
@@ -117,7 +155,7 @@
     </div>
     <div class="product-grid">
 
-      <article class="product-card">
+      <article class="product-card" data-product-id="eau-atterchia" data-product-name="Eau d'Atterchia" data-product-price="0">
         <div class="product-media">
           <span class="p-tag">Floral</span>
           <img src="aterchia.png" alt="Eau d'Atterchia">
@@ -134,15 +172,15 @@
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input type="number" min="1" value="1">
+            <input class="product-qty-input" type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-product-id="eau-zhar" data-product-name="Eau de Zhar" data-product-price="0">
         <div class="product-media">
           <span class="p-tag">Floral</span>
           <img src="zhar.png" alt="Eau de Zhar">
@@ -159,15 +197,15 @@
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input type="number" min="1" value="1">
+            <input class="product-qty-input" type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
 
-      <article class="product-card">
+      <article class="product-card" data-product-id="eau-ward" data-product-name="Eau de Ward" data-product-price="0">
         <div class="product-media">
           <span class="p-tag">Floral</span>
           <img src="ward.png" alt="Eau de Ward">
@@ -184,10 +222,10 @@
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input type="number" min="1" value="1">
+            <input class="product-qty-input" type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -201,6 +239,71 @@
     <p>&copy; 2026 التونسية — <a href="index.html">Retour a l'accueil</a></p>
   </div>
 </footer>
+
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Panier</h3>
+    <button class="cart-close" id="closeCartBtn" type="button" aria-label="Fermer">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">0.00 TND</strong>
+    </div>
+    <div class="cart-actions">
+      <button class="btn btn-red" id="cartOrderBtn" type="button">Commander via formulaire</button>
+      <a href="https://wa.me/21622155054" class="btn btn-outline" id="cartWhatsappBtn" target="_blank" rel="noopener">Commander via WhatsApp</a>
+    </div>
+  </div>
+</aside>
+
+<div class="modal-overlay" id="orderModalOverlay" aria-hidden="true"></div>
+<div class="order-modal" id="orderModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-head">
+    <div>
+      <h3>Passer une commande</h3>
+      <p class="modal-sub">Remplissez ce formulaire pour valider votre commande.</p>
+    </div>
+    <button class="modal-close" id="closeOrderModalBtn" type="button" aria-label="Fermer">×</button>
+  </div>
+  <form id="orderForm">
+    <div class="order-grid">
+      <div class="order-field">
+        <label for="nom">الاسم الكامل</label>
+        <input id="nom" name="Nom" type="text" placeholder="مثال: محمد بن علي" required>
+      </div>
+      <div class="order-field">
+        <label for="tel">رقم الهاتف</label>
+        <input id="tel" name="Telephone" type="tel" placeholder="مثال: 22 123 456" required>
+      </div>
+      <div class="order-field">
+        <label for="lieu">عنوان التسليم</label>
+        <input id="lieu" name="Lieu" type="text" placeholder="مثال: نابل، تونس..." required>
+      </div>
+    </div>
+    <div class="order-actions">
+      <button class="btn btn-red" id="orderSubmitBtn" type="submit">Valider la commande</button>
+      <a href="https://wa.me/21622155054" class="btn btn-outline" target="_blank" rel="noopener">Commander via WhatsApp</a>
+    </div>
+    <p class="order-status" id="orderStatus" aria-live="polite"></p>
+  </form>
+</div>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const links = document.querySelector('.nav-links');
+  if (burger && links) {
+    burger.addEventListener('click', () => {
+      const open = links.style.display === 'flex';
+      links.style.display = open ? 'none' : 'flex';
+      links.style.cssText += open ? '' : 'position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 32px;gap:18px;border-bottom:1px solid #e9e0d6;';
+    });
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="cart.js"></script>
 
 </body>
 </html>
