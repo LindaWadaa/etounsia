@@ -213,6 +213,7 @@
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:18px;
+    align-items:start;
   }
   .product-card{
     border:1px solid #e5d9cb;
@@ -221,11 +222,12 @@
     overflow:hidden;
     display:flex;
     flex-direction:column;
+    height:100%;
   }
   .product-media{
     position:relative;
     background:linear-gradient(160deg,var(--paper),#f4ede4);
-    min-height:200px;
+    height:200px;
     padding:20px 16px;
     display:flex;
     justify-content:center;
@@ -233,7 +235,10 @@
   }
   .product-media img{
     max-height:155px;
+    max-width:90%;
     width:auto;
+    height:auto;
+    object-fit:contain;
     filter:drop-shadow(0 14px 18px rgba(0,0,0,.14));
   }
   .p-tag{
@@ -253,8 +258,8 @@
   }
   .product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
   .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:16px;margin-bottom:4px;display:block;}
-  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
-  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
+  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .product-price{
     display:block;
     font-family:'Cormorant Garamond',serif;
@@ -677,7 +682,7 @@
     .hero-text p{margin-left:auto;margin-right:auto;}
     .hero-actions,.hero-badges{justify-content:center;}
     .product-grid{grid-template-columns:repeat(2,1fr);}
-    .product-media{min-height:180px;}
+    .product-media{height:180px;}
     .product-media img{max-height:130px;}
     .story .wrap{grid-template-columns:1fr;}
     .story-img{order:-1;}
@@ -693,9 +698,10 @@
     .hero-actions .btn,.product-actions .btn,.order-actions .btn,.cta-band .btn-row .btn{width:100%;}
     .hero-badges{gap:10px;}
     .hero-badges div{font-size:11px;}
-    .product-body{padding:12px 12px 14px;}
-    .product-body h3{font-size:18px;}
-    .product-price{font-size:28px;}
+    .product-body{padding:14px 14px 16px;}
+    .product-body h3{font-size:20px;-webkit-line-clamp:unset;}
+    .product-body .desc{-webkit-line-clamp:unset;}
+    .product-price{font-size:30px;}
     .product-config{grid-template-columns:1fr 70px;}
     .cart-head h3{font-size:24px;}
     .cart-drawer{width:100vw;}
