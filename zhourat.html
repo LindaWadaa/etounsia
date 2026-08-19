@@ -28,6 +28,9 @@
   .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
   .btn-outline:hover{background:var(--black);color:var(--white);}
 
+  .announce{background:var(--black);color:#f2ece5;text-align:center;font-size:12px;letter-spacing:.14em;padding:9px 12px;text-transform:uppercase;font-weight:500;}
+  .announce span{color:var(--gold);}
+
   header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:var(--maxw);margin:0 auto;}
   .logo-mark{display:flex;align-items:center;gap:12px;}
@@ -38,41 +41,46 @@
   .nav-links a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--black);position:relative;padding:6px 0;}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .25s ease;}
   .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:12px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--black);}
 
   .section{padding:104px 0;}
-  .section.alt{background:var(--paper);}
   .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
   .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
   .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
   .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
 
-  .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;}
+  .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
   .product-card{border:1px solid #e5d9cb;border-radius:16px;background:#fff;overflow:hidden;display:flex;flex-direction:column;}
-  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);min-height:280px;padding:28px 22px;display:flex;justify-content:center;align-items:center;}
-  .product-media img{max-height:220px;width:auto;filter:drop-shadow(0 20px 24px rgba(0,0,0,.16));}
-  .p-tag{position:absolute;top:16px;left:16px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:7px 10px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.18);}
-  .product-body{padding:20px 20px 22px;}
-  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:18px;margin-bottom:6px;display:block;}
-  .product-body h3{font-size:30px;color:var(--black);margin-bottom:8px;line-height:1.1;}
-  .product-body .desc{color:#5c534d;font-size:14.5px;line-height:1.7;margin-bottom:14px;}
-  .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:44px;line-height:1;color:var(--red);margin-bottom:4px;}
-  .product-price-note{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:16px;}
-  .product-config{display:grid;grid-template-columns:1fr 110px;gap:10px;margin-bottom:14px;}
-  .format-options{display:flex;gap:8px;flex-wrap:wrap;}
-  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:9px 12px;font-family:'Jost',sans-serif;font-size:12.5px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
+  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);min-height:200px;padding:20px 16px;display:flex;justify-content:center;align-items:center;}
+  .product-media img{max-height:155px;width:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.14));}
+  .p-tag{position:absolute;top:12px;left:12px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10px;letter-spacing:.13em;text-transform:uppercase;padding:6px 10px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.16);}
+  .product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:16px;margin-bottom:4px;display:block;}
+  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
+  .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:var(--red);margin-bottom:3px;}
+  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
+  .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
+  .format-options{display:flex;gap:6px;flex-wrap:wrap;}
+  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
   .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
-  .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:10px 10px;font-family:'Jost',sans-serif;font-size:13px;color:var(--black);background:#fff;width:100%;}
-  .product-actions{display:flex;gap:10px;}
-  .product-actions .btn{padding:12px 18px;font-size:11.5px;}
+  .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:8px 8px;font-family:'Jost',sans-serif;font-size:12px;color:var(--black);background:#fff;width:100%;}
+  .product-actions{display:flex;gap:8px;margin-top:auto;}
+  .product-actions .btn{padding:10px 14px;font-size:11px;}
 
   footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
   footer a{color:var(--gold);}
 
-  @media(max-width:960px){.nav-links{display:none;}.product-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:18px 16px 20px;}.product-body h3{font-size:26px;}.product-price{font-size:38px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
+  @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:14px 14px 16px;}.product-body h3{font-size:20px;}.product-price{font-size:30px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
 </style>
 </head>
 <body>
+
+<div class="announce">Livraison dans toute la Tunisie 🇹🇳 &nbsp;•&nbsp; <span>Produits 100% Tunisiens</span> &nbsp;•&nbsp; Première pression à froid</div>
 
 <header>
   <nav class="nav">
@@ -88,6 +96,10 @@
       <li><a href="jus.html">Jus</a></li>
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
+    <div class="nav-cta">
+      <a href="index.html#produits" class="btn btn-outline">Panier</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
@@ -100,10 +112,10 @@
     </div>
     <div class="product-grid">
 
-      <article class="product-card" data-product-id="atterchia" data-product-name="Eau d'Atterchia" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Floral</span>
-          <img src="aterchia.png" alt="Eau d'Atterchia التونسية">
+          <img src="aterchia.png" alt="Eau d'Atterchia">
         </div>
         <div class="product-body">
           <span class="arabic-tag">عَطْرشِيّة</span>
@@ -112,23 +124,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format atterchia">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="250ml">250ml</button>
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite atterchia">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="zhar" data-product-name="Eau de Zhar" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Floral</span>
-          <img src="zhar.png" alt="Eau de Zhar التونسية">
+          <img src="zhar.png" alt="Eau de Zhar">
         </div>
         <div class="product-body">
           <span class="arabic-tag">زهر</span>
@@ -137,23 +149,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format zhar">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="250ml">250ml</button>
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite zhar">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="ward" data-product-name="Eau de Ward" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Floral</span>
-          <img src="ward.png" alt="Eau de Ward التونسية">
+          <img src="ward.png" alt="Eau de Ward">
         </div>
         <div class="product-body">
           <span class="arabic-tag">ورد</span>
@@ -162,15 +174,15 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format ward">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="250ml">250ml</button>
               <button class="format-option" type="button" data-format="500ml">500ml</button>
               <button class="format-option" type="button" data-format="1L">1L</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite ward">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>

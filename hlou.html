@@ -4,25 +4,94 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hlou - التونسية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;font-family:Arial,sans-serif;background:#f9f5ef;color:#1f1a17;}
-  .wrap{max-width:900px;margin:0 auto;padding:28px 20px;}
-  .top{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
-  .top img{width:52px;height:52px;object-fit:contain;border-radius:8px;}
-  h1{margin:0 0 10px;font-size:40px;}
-  p{font-size:16px;line-height:1.7;max-width:700px;}
-  a{display:inline-block;margin-top:20px;background:#bc020e;color:#fff;text-decoration:none;padding:12px 18px;border-radius:6px;}
+  :root{--white:#ffffff;--paper:#fbf7f2;--red:#bc020e;--red-deep:#7a0009;--black:#161311;--ink:#2a221f;--gold:#b08a3e;--line:#e9e0d6;--maxw:1240px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--red);font-weight:600;display:inline-flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;font-family:'Jost',sans-serif;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-radius:2px;border:1.5px solid transparent;cursor:pointer;transition:all .25s ease;}
+  .btn-red{background:var(--red);color:var(--white);border-color:var(--red);}
+  .btn-red:hover{background:var(--red-deep);border-color:var(--red-deep);}
+  .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+  .announce{background:var(--black);color:#f2ece5;text-align:center;font-size:12px;letter-spacing:.14em;padding:9px 12px;text-transform:uppercase;font-weight:500;}
+  .announce span{color:var(--gold);}
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:var(--maxw);margin:0 auto;}
+  .logo-mark{display:flex;align-items:center;gap:12px;}
+  .logo-mark img{height:56px;width:56px;object-fit:contain;border-radius:10px;}
+  .logo-word{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--red);letter-spacing:.03em;line-height:1;}
+  .logo-word small{display:block;font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.3em;color:var(--black);font-weight:500;text-transform:uppercase;margin-top:3px;}
+  .nav-links{display:flex;gap:38px;}
+  .nav-links a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--black);position:relative;padding:6px 0;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:12px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--black);}
+  .section{padding:104px 0;}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+  .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
+  .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
+  .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
+  .coming-soon{text-align:center;padding:80px 0;color:#7a6f66;font-size:18px;}
+  footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
+  footer a{color:var(--gold);}
+  @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.btn{width:100%;justify-content:center;}}
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="top">
-      <img src="logo.png" alt="Logo التونسية">
-      <strong>التونسية</strong>
+
+<div class="announce">Livraison dans toute la Tunisie 🇹🇳 &nbsp;•&nbsp; <span>Produits 100% Tunisiens</span> &nbsp;•&nbsp; Première pression à froid</div>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo-mark">
+      <img src="logo.png" alt="التونسية">
+      <span class="logo-word">التونسية<small>Saveurs de Tunisie</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="twabel.html">Twabel</a></li>
+      <li><a href="hlou.html">Hlou</a></li>
+      <li><a href="zhourat.html">Zhourat</a></li>
+      <li><a href="jus.html">Jus</a></li>
+      <li><a href="artisanat.html">Artisanat</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#produits" class="btn btn-outline">Panier</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-    <h1>Hlou</h1>
-    <p>Cette page est prete pour presenter vos produits Hlou. Vous pouvez maintenant ajouter vos articles, prix et descriptions ici.</p>
-    <a href="index.html">Retour a l accueil</a>
-  </main>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hlou</span>
+      <h2>Douceurs & Gourmandises</h2>
+      <p>Retrouvez toute la douceur des spécialités sucrées tunisiennes préparées selon les traditions ancestrales.</p>
+    </div>
+    <div class="coming-soon">Produits bientôt disponibles.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 التونسية — <a href="index.html">Retour a l'accueil</a></p>
+  </div>
+</footer>
+
 </body>
 </html>

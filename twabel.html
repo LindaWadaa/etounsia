@@ -28,6 +28,9 @@
   .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
   .btn-outline:hover{background:var(--black);color:var(--white);}
 
+  .announce{background:var(--black);color:#f2ece5;text-align:center;font-size:12px;letter-spacing:.14em;padding:9px 12px;text-transform:uppercase;font-weight:500;}
+  .announce span{color:var(--gold);}
+
   header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:var(--maxw);margin:0 auto;}
   .logo-mark{display:flex;align-items:center;gap:12px;}
@@ -38,9 +41,12 @@
   .nav-links a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--black);position:relative;padding:6px 0;}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .25s ease;}
   .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .nav-cta .btn{padding:11px 22px;font-size:12px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--black);}
 
   .section{padding:104px 0;}
-  .section.alt{background:var(--paper);}
   .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
   .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
   .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
@@ -48,31 +54,33 @@
 
   .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
   .product-card{border:1px solid #e5d9cb;border-radius:16px;background:#fff;overflow:hidden;display:flex;flex-direction:column;}
-  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);min-height:190px;padding:18px 14px;display:flex;justify-content:center;align-items:center;}
-  .product-media img{max-height:150px;width:auto;filter:drop-shadow(0 12px 16px rgba(0,0,0,.14));}
-  .p-tag{position:absolute;top:16px;left:16px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:7px 10px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.18);}
-  .product-body{padding:14px 14px 16px;}
-  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:15px;margin-bottom:4px;display:block;}
+  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);min-height:200px;padding:20px 16px;display:flex;justify-content:center;align-items:center;}
+  .product-media img{max-height:155px;width:auto;filter:drop-shadow(0 14px 18px rgba(0,0,0,.14));}
+  .p-tag{position:absolute;top:12px;left:12px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10px;letter-spacing:.13em;text-transform:uppercase;padding:6px 10px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.16);}
+  .product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:16px;margin-bottom:4px;display:block;}
   .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
   .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
   .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:var(--red);margin-bottom:3px;}
   .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
   .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
-  .format-options{display:flex;gap:8px;flex-wrap:wrap;}
-  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11.5px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
+  .format-options{display:flex;gap:6px;flex-wrap:wrap;}
+  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
   .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
   .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:8px 8px;font-family:'Jost',sans-serif;font-size:12px;color:var(--black);background:#fff;width:100%;}
-  .product-actions{display:flex;gap:10px;}
+  .product-actions{display:flex;gap:8px;margin-top:auto;}
   .product-actions .btn{padding:10px 14px;font-size:11px;}
 
   footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
   footer a{color:var(--gold);}
 
-  @media(max-width:960px){.nav-links{display:none;}.product-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:12px 12px 14px;}.product-body h3{font-size:18px;}.product-price{font-size:28px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
+  @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:14px 14px 16px;}.product-body h3{font-size:20px;}.product-price{font-size:30px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
 </style>
 </head>
 <body>
+
+<div class="announce">Livraison dans toute la Tunisie 🇹🇳 &nbsp;•&nbsp; <span>Produits 100% Tunisiens</span> &nbsp;•&nbsp; Première pression à froid</div>
 
 <header>
   <nav class="nav">
@@ -88,6 +96,10 @@
       <li><a href="jus.html">Jus</a></li>
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
+    <div class="nav-cta">
+      <a href="index.html#produits" class="btn btn-outline">Panier</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 </header>
 
@@ -100,10 +112,10 @@
     </div>
     <div class="product-grid">
 
-      <article class="product-card" data-product-id="couscous-tunisien" data-product-name="Couscous Tunisien Artisanal" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Roulé à la main</span>
-          <img src="kosksi.png" alt="Couscous Tunisien Artisanal التونسية">
+          <img src="kosksi.png" alt="Couscous Tunisien Artisanal">
         </div>
         <div class="product-body">
           <span class="arabic-tag">كسكسي تونسي تقليدي</span>
@@ -112,23 +124,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format couscous">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="1kg">1kg</button>
               <button class="format-option" type="button" data-format="2kg">2kg</button>
               <button class="format-option" type="button" data-format="5kg">5kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite couscous">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="bourghol-tounsi" data-product-name="Bourghol Tounsi Artisanal" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Riche en fibres</span>
-          <img src="borghol.png" alt="Bourghol Tounsi Artisanal التونسية">
+          <img src="borghol.png" alt="Bourghol Tounsi Artisanal">
         </div>
         <div class="product-body">
           <span class="arabic-tag">برغل تونسي تقليدي</span>
@@ -137,23 +149,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format bourghol">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="1kg">1kg</button>
               <button class="format-option" type="button" data-format="2kg">2kg</button>
               <button class="format-option" type="button" data-format="5kg">5kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bourghol">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="mhammsa-tunisienne" data-product-name="Mhammsa Tunisienne Traditionnelle" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Traditionnelle</span>
-          <img src="mhamsa.png" alt="Mhammsa Tunisienne Traditionnelle التونسية">
+          <img src="mhamsa.png" alt="Mhammsa Tunisienne Traditionnelle">
         </div>
         <div class="product-body">
           <span class="arabic-tag">محمصة تونسية تقليدية</span>
@@ -162,23 +174,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format mhammsa">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="1kg">1kg</button>
               <button class="format-option" type="button" data-format="2kg">2kg</button>
               <button class="format-option" type="button" data-format="5kg">5kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mhammsa">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="nwasser-tunisienne" data-product-name="Nwasser Tunisienne Traditionnelle" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Fait maison</span>
-          <img src="nwasser.png" alt="Nwasser Tunisienne Traditionnelle التونسية">
+          <img src="nwasser.png" alt="Nwasser Tunisienne Traditionnelle">
         </div>
         <div class="product-body">
           <span class="arabic-tag">نواصر تونسية تقليدية</span>
@@ -187,23 +199,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format nwasser">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="1kg">1kg</button>
               <button class="format-option" type="button" data-format="2kg">2kg</button>
               <button class="format-option" type="button" data-format="5kg">5kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite nwasser">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="tabil-epices" data-product-name="Mélange d'Épices Tabil & Karawya" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Saveur Nabeulia</span>
-          <img src="tabil.png" alt="Épices Tabil التونسية">
+          <img src="tabil.png" alt="Épices Tabil">
         </div>
         <div class="product-body">
           <span class="arabic-tag">توابل تونسية (تابل وكروية)</span>
@@ -212,23 +224,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format epices">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="250g">250g</button>
               <button class="format-option" type="button" data-format="500g">500g</button>
               <button class="format-option" type="button" data-format="1kg">1kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite epices">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="bsissa-fruits-secs" data-product-name="Bsissa Tunisienne aux Fruits Secs" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Recette Grand-Mère</span>
-          <img src="bsissa.jpg" alt="Bsissa Tunisienne التونسية">
+          <img src="bsissa.jpg" alt="Bsissa Tunisienne">
         </div>
         <div class="product-body">
           <span class="arabic-tag">بسيسة تونسية بالفواكه الجافة</span>
@@ -237,22 +249,22 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format bsissa">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="500g">500g</button>
               <button class="format-option" type="button" data-format="1kg">1kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bsissa">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="mloukhia-sechee" data-product-name="Mloukhia Tunisienne Séchée" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Spécialité</span>
-          <img src="mloukhia.png" alt="Mloukhia Tunisienne Séchée التونسية">
+          <img src="mloukhia.png" alt="Mloukhia Tunisienne Séchée">
         </div>
         <div class="product-body">
           <span class="arabic-tag">ملوخية تونسية مجففة</span>
@@ -261,23 +273,23 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format mloukhia">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="250g">250g</button>
               <button class="format-option" type="button" data-format="500g">500g</button>
               <button class="format-option" type="button" data-format="1kg">1kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mloukhia">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
 
-      <article class="product-card" data-product-id="slata-mechouia" data-product-name="Slata Mechouia Artisanal" data-product-price="0">
+      <article class="product-card">
         <div class="product-media">
           <span class="p-tag">Grillé au feu de bois</span>
-          <img src="slata_mechouia.png" alt="Slata Mechouia Artisanal التونسية">
+          <img src="slata_mechouia.png" alt="Slata Mechouia Artisanal">
         </div>
         <div class="product-body">
           <span class="arabic-tag">سلطة مشوية تونسية</span>
@@ -286,15 +298,15 @@
           <span class="product-price">00.00 TND</span>
           <p class="product-price-note">Prix provisoire a mettre a jour</p>
           <div class="product-config">
-            <div class="format-options" aria-label="Format mechouia">
+            <div class="format-options">
               <button class="format-option active" type="button" data-format="350g">350g</button>
               <button class="format-option" type="button" data-format="700g">700g</button>
               <button class="format-option" type="button" data-format="1kg">1kg</button>
             </div>
-            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mechouia">
+            <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="btn btn-red" type="button">Ajouter au panier</button>
           </div>
         </div>
       </article>
