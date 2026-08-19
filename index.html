@@ -196,8 +196,8 @@
   /* ===== Products ===== */
   .product-grid{
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:24px;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
   }
   .product-card{
     border:1px solid #e5d9cb;
@@ -210,16 +210,16 @@
   .product-media{
     position:relative;
     background:linear-gradient(160deg,var(--paper),#f4ede4);
-    min-height:280px;
-    padding:28px 22px;
+    min-height:190px;
+    padding:18px 14px;
     display:flex;
     justify-content:center;
     align-items:center;
   }
   .product-media img{
-    max-height:220px;
+    max-height:150px;
     width:auto;
-    filter:drop-shadow(0 20px 24px rgba(0,0,0,.16));
+    filter:drop-shadow(0 12px 16px rgba(0,0,0,.14));
   }
   .p-tag{
     position:absolute;
@@ -236,27 +236,27 @@
     font-weight:600;
     box-shadow:0 8px 18px rgba(0,0,0,.18);
   }
-  .product-body{padding:20px 20px 22px;}
-  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:18px;margin-bottom:6px;display:block;}
-  .product-body h3{font-size:30px;color:var(--black);margin-bottom:8px;line-height:1.1;}
-  .product-body .desc{color:#5c534d;font-size:14.5px;line-height:1.7;margin-bottom:14px;}
+  .product-body{padding:14px 14px 16px;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:15px;margin-bottom:4px;display:block;}
+  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
   .product-price{
     display:block;
     font-family:'Cormorant Garamond',serif;
-    font-size:44px;
+    font-size:34px;
     line-height:1;
     color:var(--red);
-    margin-bottom:4px;
+    margin-bottom:3px;
   }
-  .product-price-note{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:16px;}
-  .product-config{display:grid;grid-template-columns:1fr 110px;gap:10px;margin-bottom:14px;}
+  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
+  .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
   .format-options{display:flex;gap:8px;flex-wrap:wrap;}
   .format-option{
     border:1px solid #d9cec2;
     border-radius:8px;
-    padding:9px 12px;
+    padding:6px 9px;
     font-family:'Jost',sans-serif;
-    font-size:12.5px;
+    font-size:11.5px;
     color:var(--black);
     background:#fff;
     cursor:pointer;
@@ -270,15 +270,15 @@
   .product-config input{
     border:1px solid #d9cec2;
     border-radius:8px;
-    padding:10px 10px;
+    padding:8px 8px;
     font-family:'Jost',sans-serif;
-    font-size:13px;
+    font-size:12px;
     color:var(--black);
     background:#fff;
     width:100%;
   }
   .product-actions{display:flex;gap:10px;}
-  .product-actions .btn{padding:12px 18px;font-size:11.5px;}
+  .product-actions .btn{padding:10px 14px;font-size:11px;}
 
   /* ===== Cart drawer ===== */
   .cart-toggle{white-space:nowrap;}
@@ -667,9 +667,9 @@
     .hero .wrap{grid-template-columns:1fr;text-align:center;padding-top:20px;}
     .hero-text p{margin-left:auto;margin-right:auto;}
     .hero-actions,.hero-badges{justify-content:center;}
-    .product-grid{grid-template-columns:1fr;}
-    .product-media{min-height:260px;}
-    .product-media img{max-height:210px;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .product-media{min-height:180px;}
+    .product-media img{max-height:140px;}
     .story .wrap{grid-template-columns:1fr;}
     .story-img{order:-1;}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -684,10 +684,10 @@
     .hero-actions .btn,.product-actions .btn,.order-actions .btn,.cta-band .btn-row .btn{width:100%;}
     .hero-badges{gap:10px;}
     .hero-badges div{font-size:11px;}
-    .product-body{padding:18px 16px 20px;}
-    .product-body h3{font-size:26px;}
-    .product-price{font-size:38px;}
-    .product-config{grid-template-columns:1fr 90px;}
+    .product-body{padding:12px 12px 14px;}
+    .product-body h3{font-size:18px;}
+    .product-price{font-size:28px;}
+    .product-config{grid-template-columns:1fr 70px;}
     .cart-head h3{font-size:24px;}
     .cart-drawer{width:100vw;}
     .formats-choice{padding:70px 0;}
@@ -705,6 +705,7 @@
     .values .wrap{flex-direction:column;}
     .story-stats{gap:30px;}
     .order-grid{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
