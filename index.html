@@ -213,6 +213,7 @@
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:18px;
+    align-items:start;
   }
   .product-card{
     border:1px solid #e5d9cb;
@@ -221,6 +222,7 @@
     overflow:hidden;
     display:flex;
     flex-direction:column;
+    height:100%;
   }
   .product-media{
     position:relative;
@@ -240,35 +242,60 @@
     filter:drop-shadow(0 14px 18px rgba(0,0,0,.14));
   }
   .p-tag{
-    position:absolute;top:12px;left:12px;z-index:3;
-    background:var(--black);color:var(--white);
+    position:absolute;
+    top:12px;
+    left:12px;
+    z-index:3;
+    background:var(--black);
+    color:var(--white);
     border:1px solid rgba(176,138,62,.55);
-    font-size:10px;letter-spacing:.13em;text-transform:uppercase;
-    padding:6px 10px;font-weight:600;
+    font-size:10px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    font-weight:600;
     box-shadow:0 6px 14px rgba(0,0,0,.16);
   }
-  .product-body{
-    padding:16px 16px 18px;
-    display:flex;flex-direction:column;flex:1;
-  }
+  .product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
   .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:16px;margin-bottom:4px;display:block;}
   .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:42px;}
-  .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:var(--red);margin-bottom:3px;}
-  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
-  .product-config{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-  .format-options{display:flex;gap:6px;flex-wrap:wrap;}
-  .format-option{
-    border:1px solid #d9cec2;border-radius:8px;
-    padding:6px 9px;font-family:'Jost',sans-serif;
-    font-size:11px;color:var(--black);background:#fff;
-    cursor:pointer;font-weight:600;
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .product-price{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    line-height:1;
+    color:var(--red);
+    margin-bottom:3px;
   }
-  .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
+  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
+  .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
+  .format-options{display:flex;gap:8px;flex-wrap:wrap;}
+  .format-option{
+    border:1px solid #d9cec2;
+    border-radius:8px;
+    padding:6px 9px;
+    font-family:'Jost',sans-serif;
+    font-size:11px;
+    color:var(--black);
+    background:#fff;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .format-option.active{
+    background:var(--black);
+    color:#fff;
+    border-color:var(--black);
+  }
   .product-config input{
-    border:1px solid #d9cec2;border-radius:8px;
-    padding:8px 10px;font-family:'Jost',sans-serif;
-    font-size:12px;color:var(--black);background:#fff;width:100%;
+    border:1px solid #d9cec2;
+    border-radius:8px;
+    padding:8px 8px;
+    font-family:'Jost',sans-serif;
+    font-size:12px;
+    color:var(--black);
+    background:#fff;
+    width:100%;
   }
   .product-actions{display:flex;gap:8px;margin-top:auto;align-items:center;}
   .add-cart-btn{
@@ -673,7 +700,7 @@
     .hero-badges div{font-size:11px;}
     .product-body{padding:14px 14px 16px;}
     .product-body h3{font-size:20px;-webkit-line-clamp:unset;}
-    .product-body .desc{-webkit-line-clamp:unset;min-height:auto;}
+    .product-body .desc{-webkit-line-clamp:unset;}
     .product-price{font-size:30px;}
     .product-config{grid-template-columns:1fr 70px;}
     .cart-head h3{font-size:24px;}
