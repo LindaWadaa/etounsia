@@ -45,6 +45,9 @@
   .nav-cta .btn{padding:11px 22px;font-size:12px;}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--black);}
+  .cart-icon-btn{position:relative;background:none;border:none;cursor:pointer;font-size:26px;line-height:1;padding:4px;transition:transform .2s ease;}
+  .cart-icon-btn:hover{transform:scale(1.15);}
+  .cart-count-badge{position:absolute;top:-4px;right:-6px;min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;font-weight:700;font-family:'Jost',sans-serif;}
 
   .section{padding:104px 0;}
   .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
@@ -68,8 +71,10 @@
   .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
   .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
   .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:8px 8px;font-family:'Jost',sans-serif;font-size:12px;color:var(--black);background:#fff;width:100%;}
-  .product-actions{display:flex;gap:8px;margin-top:auto;}
-  .product-actions .btn{padding:10px 14px;font-size:11px;}
+  .product-actions{display:flex;gap:8px;margin-top:auto;align-items:center;}
+  .add-cart-btn{width:44px;height:44px;border-radius:50%;background:var(--red);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;line-height:1;box-shadow:0 4px 12px rgba(188,2,14,.3);transition:all .2s ease;position:relative;}
+  .add-cart-btn:hover{background:var(--red-deep);transform:scale(1.1);box-shadow:0 6px 16px rgba(188,2,14,.4);}
+  .add-cart-btn .plus{position:absolute;bottom:-1px;right:-1px;background:var(--black);color:#fff;width:18px;height:18px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;}
 
   footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
   footer a{color:var(--gold);}
@@ -96,10 +101,10 @@
       <li><a href="jus.html">Jus</a></li>
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="index.html#produits" class="btn btn-outline">Panier</a>
-      <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
+      <div class="nav-cta">
+        <a href="index.html#produits" class="cart-icon-btn" aria-label="Panier">🛒</a>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
   </nav>
 </header>
 
@@ -132,7 +137,7 @@
             <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -157,7 +162,7 @@
             <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -182,7 +187,7 @@
             <input type="number" min="1" value="1">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>

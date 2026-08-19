@@ -115,6 +115,21 @@
   .nav-cta .btn{padding:11px 22px;font-size:12px;}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--black);}
+  .cart-icon-btn{
+    position:relative;background:none;border:none;cursor:pointer;
+    font-size:26px;line-height:1;padding:4px;
+    transition:transform .2s ease;
+  }
+  .cart-icon-btn:hover{transform:scale(1.15);}
+  .cart-icon-btn .cart-emoji{display:block;}
+  .cart-count-badge{
+    position:absolute;top:-4px;right:-6px;
+    min-width:18px;height:18px;padding:0 5px;
+    border-radius:99px;background:var(--red);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;line-height:1;font-weight:700;
+    font-family:'Jost',sans-serif;
+  }
 
   /* ===== Hero ===== */
   .hero{
@@ -277,25 +292,19 @@
     background:#fff;
     width:100%;
   }
-  .product-actions{display:flex;gap:8px;margin-top:auto;}
-  .product-actions .btn{padding:10px 14px;font-size:11px;}
+  .product-actions{display:flex;gap:8px;margin-top:auto;align-items:center;}
+  .add-cart-btn{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--red);border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;color:#fff;line-height:1;
+    box-shadow:0 4px 12px rgba(188,2,14,.3);
+    transition:all .2s ease;position:relative;
+  }
+  .add-cart-btn:hover{background:var(--red-deep);transform:scale(1.1);box-shadow:0 6px 16px rgba(188,2,14,.4);}
+  .add-cart-btn .plus{position:absolute;bottom:-1px;right:-1px;background:var(--black);color:#fff;width:18px;height:18px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;}
 
   /* ===== Cart drawer ===== */
-  .cart-toggle{white-space:nowrap;}
-  .cart-count-badge{
-    min-width:20px;
-    height:20px;
-    padding:0 6px;
-    border-radius:99px;
-    background:var(--red);
-    color:#fff;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    font-size:11px;
-    line-height:1;
-    font-weight:700;
-  }
   .cart-overlay{
     position:fixed;
     inset:0;
@@ -728,7 +737,7 @@
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
     <div class="nav-cta">
-      <button class="btn btn-outline cart-toggle" id="openCartBtn" type="button">Panier <span class="cart-count-badge" id="cartCountBadge">0</span></button>
+      <button class="cart-icon-btn" id="openCartBtn" type="button" aria-label="Panier"><span class="cart-emoji">🛒</span><span class="cart-count-badge" id="cartCountBadge">0</span></button>
       <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -805,7 +814,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite huile">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -829,7 +838,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite harissa">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -853,7 +862,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite sahlab">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -877,7 +886,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite tomate">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -902,7 +911,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite epices">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -926,7 +935,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite olives">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -950,7 +959,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bsissa">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -975,7 +984,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite miel">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1000,7 +1009,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mloukhia">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1025,7 +1034,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite couscous">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1050,7 +1059,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite chamia">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1075,7 +1084,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite zrir">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1100,7 +1109,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bourghol">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1125,7 +1134,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mhammsa">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1150,7 +1159,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mechouia">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1175,7 +1184,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite nwasser">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1200,7 +1209,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite atterchia">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1225,7 +1234,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite zhar">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
@@ -1250,7 +1259,7 @@
             <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite ward">
           </div>
           <div class="product-actions">
-            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+            <button class="add-cart-btn add-to-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
           </div>
         </div>
       </article>
