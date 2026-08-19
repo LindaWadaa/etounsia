@@ -119,13 +119,16 @@
   /* ===== Hero ===== */
   .hero{
     position:relative;
-    background:var(--paper);
+    background:
+      linear-gradient(rgba(251,247,242,.88),rgba(251,247,242,.9)),
+      url('ChatGPT Image 18 août 2026, 23_14_47.png') 25% center / cover no-repeat;
     overflow:hidden;
   }
   .hero .wrap{
-    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
-    min-height:640px;padding-top:40px;padding-bottom:40px;
+    display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:40px;
+    min-height:580px;padding-top:60px;padding-bottom:60px;
   }
+  .hero-text{max-width:620px;}
   .hero-text .eyebrow{margin-bottom:22px;}
   .hero-text h1{
     font-size:clamp(42px,5.2vw,68px);
@@ -133,33 +136,39 @@
   }
   .hero-text h1 em{font-style:italic;color:var(--red);}
   .hero-text p{
-    font-size:17px;line-height:1.7;color:#514a45;max-width:440px;margin-bottom:34px;
+    font-size:17px;line-height:1.7;color:#514a45;max-width:540px;margin-bottom:34px;
   }
   .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
   .hero-badges{display:flex;gap:28px;flex-wrap:wrap;}
   .hero-badges div{font-size:12px;letter-spacing:.05em;color:var(--black);display:flex;align-items:center;gap:8px;font-weight:500;}
   .hero-badges div .dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;}
-  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
   .hero-visual::before{
-    content:"";position:absolute;width:420px;height:420px;border-radius:50%;
-    background:radial-gradient(circle,rgba(188,2,14,.08) 0%,rgba(188,2,14,0) 70%);
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(188,2,14,.12) 0%, rgba(188,2,14,0) 70%);
     z-index:0;
   }
   .hero-visual img{
     position:relative;
     z-index:1;
-    width:clamp(230px,30vw,360px);
-    aspect-ratio:3/5;
+    width:clamp(220px,26vw,340px);
+    height:auto;
     object-fit:contain;
-    background:linear-gradient(180deg,#fff,#f8f2ea);
-    border:1px solid rgba(176,138,62,.35);
-    border-radius:140px 140px 28px 28px;
-    padding:14px;
-    filter:drop-shadow(0 34px 42px rgba(0,0,0,.2));
+    filter:drop-shadow(0 20px 30px rgba(188,2,14,.18));
+    transition:transform .3s ease;
   }
-  .hero-ring{
-    position:absolute;width:500px;height:500px;border:1px solid var(--gold);
-    border-radius:50%;opacity:.35;z-index:0;
+  .hero-visual img:hover{
+    transform:scale(1.04);
   }
 
   /* ===== Values strip ===== */
@@ -185,44 +194,201 @@
   .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
 
   /* ===== Products ===== */
-  .product-block{
-    display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
-    margin-bottom:130px;
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
   }
-  .product-block:last-child{margin-bottom:0;}
-  .product-block.reverse{direction:rtl;}
-  .product-block.reverse > *{direction:ltr;}
-  .p-visual{
-    position:relative;display:flex;justify-content:center;align-items:center;
+  .product-card{
+    border:1px solid #e5d9cb;
+    border-radius:16px;
+    background:#fff;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .product-media{
+    position:relative;
     background:linear-gradient(160deg,var(--paper),#f4ede4);
-    border-radius:4px;padding:50px;min-height:480px;
+    min-height:280px;
+    padding:28px 22px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
   }
-  .p-visual img{max-height:420px;width:auto;filter:drop-shadow(0 30px 34px rgba(0,0,0,.15));}
+  .product-media img{
+    max-height:220px;
+    width:auto;
+    filter:drop-shadow(0 20px 24px rgba(0,0,0,.16));
+  }
   .p-tag{
-    position:absolute;top:26px;left:26px;z-index:3;
-    background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);
-    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;font-weight:600;
+    position:absolute;
+    top:16px;
+    left:16px;
+    z-index:3;
+    background:var(--black);
+    color:var(--white);
+    border:1px solid rgba(176,138,62,.55);
+    font-size:10.5px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    padding:7px 10px;
+    font-weight:600;
     box-shadow:0 8px 18px rgba(0,0,0,.18);
   }
-  .p-content .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:20px;margin-bottom:10px;display:block;}
-  .p-content h3{font-size:clamp(30px,3.6vw,42px);color:var(--black);margin-bottom:18px;line-height:1.1;}
-  .p-content p.desc{color:#5c534d;font-size:15.5px;line-height:1.8;margin-bottom:26px;max-width:480px;}
-  .p-facts{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:30px;}
-  .p-facts div{
-    font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
-    color:var(--black);border:1px solid var(--line);padding:9px 16px;border-radius:2px;
-    display:flex;align-items:center;gap:8px;
+  .product-body{padding:20px 20px 22px;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:18px;margin-bottom:6px;display:block;}
+  .product-body h3{font-size:30px;color:var(--black);margin-bottom:8px;line-height:1.1;}
+  .product-body .desc{color:#5c534d;font-size:14.5px;line-height:1.7;margin-bottom:14px;}
+  .product-price{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:44px;
+    line-height:1;
+    color:var(--red);
+    margin-bottom:4px;
   }
-  .p-facts div::before{content:"";width:5px;height:5px;background:var(--red);border-radius:50%;}
-  .p-formats{margin-bottom:32px;}
-  .p-formats .label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8078;font-weight:600;margin-bottom:12px;}
-  .format-pills{display:flex;gap:10px;flex-wrap:wrap;}
-  .format-pills span{
-    padding:9px 18px;border:1.5px solid var(--black);font-size:13px;font-weight:600;
-    border-radius:2px;color:var(--black);letter-spacing:.02em;
+  .product-price-note{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:16px;}
+  .product-config{display:grid;grid-template-columns:1fr 110px;gap:10px;margin-bottom:14px;}
+  .format-options{display:flex;gap:8px;flex-wrap:wrap;}
+  .format-option{
+    border:1px solid #d9cec2;
+    border-radius:8px;
+    padding:9px 12px;
+    font-family:'Jost',sans-serif;
+    font-size:12.5px;
+    color:var(--black);
+    background:#fff;
+    cursor:pointer;
+    font-weight:600;
   }
-  .format-pills span.hi{background:var(--black);color:var(--white);}
-  .p-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .format-option.active{
+    background:var(--black);
+    color:#fff;
+    border-color:var(--black);
+  }
+  .product-config input{
+    border:1px solid #d9cec2;
+    border-radius:8px;
+    padding:10px 10px;
+    font-family:'Jost',sans-serif;
+    font-size:13px;
+    color:var(--black);
+    background:#fff;
+    width:100%;
+  }
+  .product-actions{display:flex;gap:10px;}
+  .product-actions .btn{padding:12px 18px;font-size:11.5px;}
+
+  /* ===== Cart drawer ===== */
+  .cart-toggle{white-space:nowrap;}
+  .cart-count-badge{
+    min-width:20px;
+    height:20px;
+    padding:0 6px;
+    border-radius:99px;
+    background:var(--red);
+    color:#fff;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    line-height:1;
+    font-weight:700;
+  }
+  .cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:220;
+  }
+  .cart-overlay.open{opacity:1;pointer-events:auto;}
+  .cart-drawer{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(420px,100vw);
+    height:100vh;
+    background:#fff;
+    border-left:1px solid #e9e0d6;
+    box-shadow:-14px 0 28px rgba(0,0,0,.12);
+    z-index:230;
+    transform:translateX(100%);
+    transition:transform .28s ease;
+    display:flex;
+    flex-direction:column;
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 18px;
+    border-bottom:1px solid #eee3d7;
+  }
+  .cart-head h3{font-size:28px;color:var(--black);}
+  .cart-close{
+    border:none;
+    background:none;
+    font-size:26px;
+    line-height:1;
+    cursor:pointer;
+    color:var(--black);
+  }
+  .cart-items{
+    padding:14px 16px;
+    overflow:auto;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .cart-empty{
+    border:1px dashed #dacdbd;
+    border-radius:10px;
+    padding:14px;
+    color:#74695f;
+    font-size:13px;
+    text-align:center;
+  }
+  .cart-item{
+    border:1px solid #eadfce;
+    border-radius:10px;
+    padding:10px;
+  }
+  .cart-item-title{font-size:14px;font-weight:600;color:#1f1a17;margin-bottom:2px;}
+  .cart-item-sub{font-size:12px;color:#7b7067;margin-bottom:8px;}
+  .cart-item-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .cart-qty{
+    display:inline-flex;
+    align-items:center;
+    border:1px solid #d9cec2;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .cart-qty button{
+    border:none;
+    background:#f8f2ea;
+    width:28px;
+    height:28px;
+    cursor:pointer;
+    font-weight:700;
+  }
+  .cart-qty span{width:34px;text-align:center;font-size:13px;font-weight:600;}
+  .cart-remove{border:none;background:none;color:#9e1b1b;font-size:12px;cursor:pointer;}
+  .cart-foot{
+    border-top:1px solid #eee3d7;
+    padding:14px 16px 18px;
+    background:#fff;
+  }
+  .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .cart-total span{font-size:12px;color:#7a6f66;text-transform:uppercase;letter-spacing:.11em;font-weight:600;}
+  .cart-total strong{font-size:26px;color:var(--black);font-family:'Cormorant Garamond',serif;}
+  .cart-actions{display:flex;flex-direction:column;gap:10px;}
+  .cart-actions .btn{width:100%;justify-content:center;}
 
   /* ===== Formats section ===== */
   .formats-choice{
@@ -347,32 +513,97 @@
     position:absolute;inset:22px -22px -22px 22px;border:1.5px solid rgba(255,255,255,.5);z-index:-1;
   }
 
-  /* ===== Order form ===== */
-  .order-box{
+  /* ===== Order Modal Popup ===== */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:300;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .order-modal{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-45%) scale(.95);
+    width:min(560px, calc(100vw - 32px));
+    max-height:calc(100vh - 40px);
+    overflow-y:auto;
     background:var(--white);
     border:1px solid var(--line);
-    border-radius:4px;
-    padding:30px;
-    margin-top:70px;
+    border-radius:16px;
+    padding:28px 30px;
+    box-shadow:0 24px 48px rgba(0,0,0,.22);
+    z-index:310;
+    opacity:0;
+    pointer-events:none;
+    transition:all .28s cubic-bezier(0.16,1,0.3,1);
   }
-  .order-box h3{font-size:clamp(26px,3.2vw,34px);margin-bottom:8px;color:var(--black);}
-  .order-box p{color:#5c534d;font-size:14.5px;line-height:1.7;margin-bottom:22px;}
+  .order-modal.open{
+    opacity:1;
+    pointer-events:auto;
+    transform:translate(-50%,-50%) scale(1);
+  }
+  .modal-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .modal-head h3{
+    font-size:26px;
+    color:var(--black);
+    line-height:1.2;
+  }
+  .modal-sub{
+    font-size:13px;
+    color:#6c6158;
+    margin-top:4px;
+  }
+  .modal-close{
+    border:none;
+    background:none;
+    font-size:28px;
+    line-height:1;
+    cursor:pointer;
+    color:var(--black);
+    padding:0 4px;
+  }
   .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .order-field{display:flex;flex-direction:column;gap:7px;}
-  .order-field label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5c534d;font-weight:600;}
-  .order-field input,.order-field select,.order-field textarea{
+  .order-field label{
+    font-family:'Aref Ruqaa', serif;
+    font-size:19px;
+    font-weight:700;
+    color:var(--red);
+    letter-spacing:0;
+    margin-bottom:2px;
+  }
+  .order-field input,.order-field select{
     border:1px solid #d9cec2;
-    border-radius:2px;
+    border-radius:8px;
     padding:12px 13px;
     font-family:'Jost',sans-serif;
     font-size:14px;
     color:var(--black);
     background:#fff;
   }
-  .order-field textarea{min-height:110px;resize:vertical;}
-  .order-field.full{grid-column:1 / -1;}
-  .order-actions{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-  .order-note{font-size:12.5px;color:#786f67;}
+  .order-field input:focus,.order-field select:focus{
+    outline:none;
+    border-color:var(--red);
+  }
+  .order-actions{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
   .order-status{margin-top:12px;font-size:13px;font-weight:500;}
   .order-status.ok{color:#1f7a3e;}
   .order-status.err{color:#9e1b1b;}
@@ -436,14 +667,9 @@
     .hero .wrap{grid-template-columns:1fr;text-align:center;padding-top:20px;}
     .hero-text p{margin-left:auto;margin-right:auto;}
     .hero-actions,.hero-badges{justify-content:center;}
-    .hero-visual{order:-1;}
-    .hero-ring{width:340px;height:340px;}
-    .hero-visual::before{width:300px;height:300px;}
-    .product-block{grid-template-columns:1fr;gap:36px;}
-    .product-block.reverse{direction:ltr;}
-    .p-visual{min-height:360px;padding:30px 24px;}
-    .p-visual img{max-height:300px;}
-    .p-tag{top:16px;left:16px;}
+    .product-grid{grid-template-columns:1fr;}
+    .product-media{min-height:260px;}
+    .product-media img{max-height:210px;}
     .story .wrap{grid-template-columns:1fr;}
     .story-img{order:-1;}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -454,13 +680,16 @@
     .wrap{padding:0 20px;}
     .section{padding:70px 0;}
     .btn{width:100%;justify-content:center;}
-    .hero-actions,.p-actions,.order-actions,.cta-band .btn-row{width:100%;}
-    .hero-actions .btn,.p-actions .btn,.order-actions .btn,.cta-band .btn-row .btn{width:100%;}
+    .hero-actions,.product-actions,.order-actions,.cta-band .btn-row{width:100%;}
+    .hero-actions .btn,.product-actions .btn,.order-actions .btn,.cta-band .btn-row .btn{width:100%;}
     .hero-badges{gap:10px;}
     .hero-badges div{font-size:11px;}
-    .p-visual{min-height:285px;padding:20px 16px;}
-    .p-visual img{max-height:220px;width:100%;}
-    .p-tag{top:12px;left:12px;font-size:10.5px;padding:6px 10px;}
+    .product-body{padding:18px 16px 20px;}
+    .product-body h3{font-size:26px;}
+    .product-price{font-size:38px;}
+    .product-config{grid-template-columns:1fr 90px;}
+    .cart-head h3{font-size:24px;}
+    .cart-drawer{width:100vw;}
     .formats-choice{padding:70px 0;}
     .formats-panel{padding:22px 16px;border-radius:14px;}
     .formats-head{text-align:center;}
@@ -486,18 +715,19 @@
 <header>
   <nav class="nav">
     <a href="#accueil" class="logo-mark">
-      <img src="logo.jpeg" alt="التونسية">
+      <img src="logo.png" alt="التونسية">
       <span class="logo-word">التونسية<small>Saveurs de Tunisie</small></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#produits">Nos Produits</a></li>
-      <li><a href="#formats">Formats</a></li>
-      <li><a href="#histoire">Notre Histoire</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index (1).html">Accueil</a></li>
+      <li><a href="twabel.html">Twabel</a></li>
+      <li><a href="hlou.html">Hlou</a></li>
+      <li><a href="zhourat.html">Zhourat</a></li>
+      <li><a href="jus.html">Jus</a></li>
+      <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#commande" class="btn btn-red">Commander</a>
+      <button class="btn btn-outline cart-toggle" id="openCartBtn" type="button">Panier <span class="cart-count-badge" id="cartCountBadge">0</span></button>
       <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -520,8 +750,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-ring"></div>
-      <img src="logo.jpeg" alt="Logo التونسية">
+      <img src="logo.png" alt="التونسية - Saveurs de Tunisie">
     </div>
   </div>
 </section>
@@ -551,126 +780,375 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Nos Produits</span>
-      <h2>Deux essentiels, préparés avec exigence</h2>
-      <p>Nous commençons avec ce qu'il y a de plus précieux dans la cuisine tunisienne : l'huile d'olive et la harissa. Chaque produit porte l'empreinte de nos régions.</p>
+      <h2>Délices & Spécialités Authentiques</h2>
+      <p>Retrouvez toute la richesse du terroir tunisien préparée selon les traditions ancestrales de nos régions.</p>
+    </div>
+    <div class="product-grid">
+      <article class="product-card" data-product-id="huile-olive" data-product-name="Huile d'Olive Vierge Extra" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Best-seller</span>
+          <img src="oil.jpeg" alt="Huile d'olive vierge extra التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">زيت زيتون بكر ممتاز</span>
+          <h3>Huile d'Olive Vierge Extra</h3>
+          <p class="desc">Première pression à froid, origine Tunisie, goût fruité et équilibré.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format huile">
+              <button class="format-option active" type="button" data-format="1 Litre">1L</button>
+              <button class="format-option" type="button" data-format="10 Litres">10L</button>
+              <button class="format-option" type="button" data-format="20 Litres">20L</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite huile">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="harissa-nabeul" data-product-name="Harissa Nabeulia" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Fait maison</span>
+          <img src="harissa.jpeg" alt="Harissa Nabeulia التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">هريسة نابلية</span>
+          <h3>Harissa Nabeulia</h3>
+          <p class="desc">Recette traditionnelle de Nabeul, piment naturel et sans conservateur.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format harissa">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite harissa">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="sahlab-tounsi" data-product-name="Sahlab Tounsi" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Traditionnel</span>
+          <img src="sohlob.png" alt="Sahlab Tounsi التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">سحلب تونسي</span>
+          <h3>Sahlab Tounsi</h3>
+          <p class="desc">Boisson artisanale traditionnelle aux arômes naturels de fleur d'oranger et de vanille.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format sahlab">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite sahlab">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="tomate-sechee" data-product-name="Concentré de Tomate & Tomates Séchées" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Artisanal</span>
+          <img src="tomate.png" alt="Concentré de Tomate التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">طماطم شمسية ومعجون تقليـدي</span>
+          <h3>Concentré de Tomate & Tomates Séchées</h3>
+          <p class="desc">Tomates tunisiennes gorgées de soleil, séchées naturellement et cuisinées à l'ancienne.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format tomate">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite tomate">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="tabil-epices" data-product-name="Mélange d'Épices Tabil & Karawya" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Saveur Nabeulia</span>
+          <img src="tabil.png" alt="Épices Tabil التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">توابل تونسية (تابل وكروية)</span>
+          <h3>Mélange d'Épices Tabil & Karawya</h3>
+          <p class="desc">Mélange traditionnel tunisien de coriandre moulue, carvi, ail et piments doux.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format epices">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite epices">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="olives-vertes" data-product-name="Olives Vertes Assaisonnées" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Récolte Locale</span>
+          <img src="zitoun.jpg" alt="Olives Vertes التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">زيتون أخضر متبل</span>
+          <h3>Olives Vertes Assaisonnées</h3>
+          <p class="desc">Olives vertes préparées aux herbes aromatiques, piment doux et huile d'olive vierge extra.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format olives">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite olives">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="bsissa-fruits-secs" data-product-name="Bsissa Tunisienne aux Fruits Secs" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Recette Grand-Mère</span>
+          <img src="bsissa.jpg" alt="Bsissa Tunisienne التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">بسيسة تونسية بالفواكه الجافة</span>
+          <h3>Bsissa Tunisienne aux Fruits Secs</h3>
+          <p class="desc">Préparation artisanale aux céréales grillées, miels et mélange généreux de fruits secs.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format bsissa">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bsissa">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="miel-naturel" data-product-name="Miel Naturel Pur" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">100% Pur</span>
+          <img src="miel.jpg" alt="Miel Naturel Pur التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">عسل طبيعي ممتاز</span>
+          <h3>Miel Naturel Pur</h3>
+          <p class="desc">Miel pur récolté dans les régions florales de Tunisie, aux vertus apaisantes et goût raffiné.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format miel">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite miel">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="mloukhia-sechee" data-product-name="Mloukhia Tunisienne Séchée" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Spécialité</span>
+          <img src="mloukhia.png" alt="Mloukhia Tunisienne Séchée التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">ملوخية تونسية مجففة</span>
+          <h3>Mloukhia Tunisienne Séchée</h3>
+          <p class="desc">Poudre de mloukhia artisanale séchée naturellement et finement moulue, 100% pure.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mloukhia">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mloukhia">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="couscous-tunisien" data-product-name="Couscous Tunisien Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Roulé à la main</span>
+          <img src="kosksi.png" alt="Couscous Tunisien Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">كسكسي تونسي تقليدي</span>
+          <h3>Couscous Tunisien Artisanal</h3>
+          <p class="desc">Couscous traditionnel préparé et roulé à la main selon les méthodes ancestrales tunisiennes.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format couscous">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite couscous">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="halwa-chamia" data-product-name="Halwa Chamia au Pistache" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Gourmandise</span>
+          <img src="chamia.png" alt="Halwa Chamia au Pistache التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">حلوى شامية بالفستق</span>
+          <h3>Halwa Chamia au Pistache</h3>
+          <p class="desc">Chamia artisanale fondante à la pâte de sésame et garnie généreusement de pistaches croquantes.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format chamia">
+              <button class="format-option active" type="button" data-format="350g">350g</button>
+              <button class="format-option" type="button" data-format="700g">700g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite chamia">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="zrir-tounsi" data-product-name="Zrir Tounsi Traditionnel" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Spécialité Fêtes</span>
+          <img src="zrir.jpg" alt="Zrir Tounsi Traditionnel التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">زرير تونسي بالجلجلان واللوز</span>
+          <h3>Zrir Tounsi Traditionnel</h3>
+          <p class="desc">Douceur traditionnelle au sésame grillé, noisettes, amandes et miel pur de fleurs.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format zrir">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite zrir">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="bourghol-tounsi" data-product-name="Bourghol Tounsi Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Riche en fibres</span>
+          <img src="borghol.png" alt="Bourghol Tounsi Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">برغل تونسي تقليدي</span>
+          <h3>Bourghol Tounsi Artisanal</h3>
+          <p class="desc">Blé dur concassé préparé selon la tradition tunisienne, riche en fibres et valeurs nutritionnelles.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format bourghol">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bourghol">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="mhammsa-tunisienne" data-product-name="Mhammsa Tunisienne Traditionnelle" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Traditionnelle</span>
+          <img src="mhamsa.png" alt="Mhammsa Tunisienne Traditionnelle التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">محمصة تونسية تقليدية</span>
+          <h3>Mhammsa Tunisienne Traditionnelle</h3>
+          <p class="desc">Pâtes artisanales en petites plombs faites à base de semoule de blé dur de qualité supérieure.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mhammsa">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mhammsa">
+          </div>
+      <article class="product-card" data-product-id="slata-mechouia" data-product-name="Slata Mechouia Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Grillé au feu de bois</span>
+          <img src="slata_mechouia.png" alt="Slata Mechouia Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">سلطة مشوية تونسية</span>
+          <h3>Slata Mechouia Artisanal</h3>
+          <p class="desc">Salade tunisienne aux piments et aubergines grillés au feu de bois, assaisonnée à l'huile d'olive.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mechouia">
+              <button class="format-option active" type="button" data-format="350g">350g</button>
+              <button class="format-option" type="button" data-format="700g">700g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mechouia">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <!-- Product 1: Olive Oil -->
-    <div class="product-block">
-      <div class="p-visual">
-        <span class="p-tag">Best-seller</span>
-        <img src="oil.jpeg" alt="Huile d'olive vierge extra التونسية">
-      </div>
-      <div class="p-content">
-        <span class="arabic-tag">زيت زيتون بكر ممتاز</span>
-        <h3>Huile d'Olive Vierge Extra</h3>
-        <p class="desc">Issue d'une première pression à froid, notre huile d'olive révèle un fruité intense et un équilibre parfait entre amertume et piquant. Récoltée à maturité dans les oliveraies du nord de la Tunisie, elle est mise en bouteille sans aucun traitement chimique.</p>
-        <div class="p-facts">
-          <div>Acidité &lt; 0,3%</div>
-          <div>Extraction mécanique</div>
-          <div>Origine Tunisie</div>
-        </div>
-        <div class="p-formats">
-          <div class="label">Formats disponibles</div>
-          <div class="format-pills">
-            <span class="hi">1 Litre</span>
-            <span>10 Litres</span>
-            <span>20 Litres</span>
-          </div>
-        </div>
-        <div class="p-actions">
-          <a href="#commande" class="btn btn-red">Commander ce produit</a>
-          <a href="https://wa.me/21622155054?text=Bonjour%2C%20je%20souhaite%20commander%20de%20l%27huile%20d%27olive%20التونسية" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp rapide</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Product 2: Harissa -->
-    <div class="product-block reverse">
-      <div class="p-visual">
-        <span class="p-tag">Fait maison</span>
-        <img src="harissa.jpeg" alt="Harissa Nabeulia التونسية">
-      </div>
-      <div class="p-content">
-        <span class="arabic-tag">هريسة نابلية</span>
-        <h3>Harissa Nabeulia</h3>
-        <p class="desc">Préparée selon la recette traditionnelle de Nabeul, notre harissa marie piment rouge sélectionné, ail et épices torréfiées pour un goût authentique, relevé juste comme il faut. Aucun colorant, aucun conservateur — que du naturel.</p>
-        <div class="p-facts">
-          <div>Piment 100% naturel</div>
-          <div>Sans colorant</div>
-          <div>Recette de Nabeul</div>
-        </div>
-        <div class="p-formats">
-          <div class="label">Formats disponibles</div>
-          <div class="format-pills">
-            <span class="hi">Pot 350g</span>
-            <span>Pot 700g</span>
-            <span>Sur commande</span>
-          </div>
-        </div>
-        <div class="p-actions">
-          <a href="#commande" class="btn btn-red">Commander ce produit</a>
-          <a href="https://wa.me/21622155054?text=Bonjour%2C%20je%20souhaite%20commander%20de%20la%20harissa%20Nabeulia%20التونسية" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp rapide</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="order-box" id="commande">
-      <h3>Passer une commande</h3>
-      <p>Remplissez ce formulaire. En cliquant sur envoyer, votre commande est transmise automatiquement.</p>
-      <form id="orderForm">
-        <div class="order-grid">
-          <div class="order-field">
-            <label for="nom">Nom complet</label>
-            <input id="nom" name="Nom" type="text" required>
-          </div>
-          <div class="order-field">
-            <label for="email">Email</label>
-            <input id="email" name="Email" type="email" required>
-          </div>
-          <div class="order-field">
-            <label for="tel">Telephone</label>
-            <input id="tel" name="Telephone" type="tel" required>
-          </div>
-          <div class="order-field">
-            <label for="produit">Produit</label>
-            <select id="produit" name="Produit" required>
-              <option value="">Choisir un produit</option>
-              <option>Huile d'Olive Vierge Extra</option>
-              <option>Harissa Nabeulia</option>
-            </select>
-          </div>
-          <div class="order-field">
-            <label for="format">Format</label>
-            <select id="format" name="Format" required>
-              <option value="">Choisir un format</option>
-              <option>1 Litre</option>
-              <option>10 Litres</option>
-              <option>20 Litres</option>
-              <option>Pot 350g</option>
-              <option>Pot 700g</option>
-            </select>
-          </div>
-          <div class="order-field">
-            <label for="qte">Quantite</label>
-            <input id="qte" name="Quantite" type="number" min="1" value="1" required>
-          </div>
-          <div class="order-field">
-            <label for="lieu">Lieu de livraison</label>
-            <input id="lieu" name="Lieu" type="text" required>
-          </div>
-          <div class="order-field full">
-            <label for="msg">Message</label>
-            <textarea id="msg" name="Message" placeholder="Ajoutez ici une precision sur votre commande..."></textarea>
-          </div>
-        </div>
-        <div class="order-actions">
-          <button class="btn btn-red" id="orderSubmitBtn" type="submit">Envoyer la commande</button>
-          <a href="https://wa.me/21622155054" class="btn btn-outline" target="_blank" rel="noopener">Commander via WhatsApp</a>
-        </div>
-        <p class="order-status" id="orderStatus" aria-live="polite"></p>
-      </form>
-    </div>
   </div>
 </section>
 
@@ -746,7 +1224,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="logo.jpeg" alt="التونسية">
+        <img src="logo.png" alt="التونسية">
         <p>Huile d'olive et harissa 100% tunisiennes, préparées avec exigence dans le respect des traditions du pays.</p>
         <div class="social-row">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -757,10 +1235,12 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#produits">Nos Produits</a></li>
-          <li><a href="#formats">Formats</a></li>
-          <li><a href="#histoire">Notre Histoire</a></li>
+          <li><a href="index (1).html">Accueil</a></li>
+          <li><a href="twabel.html">Twabel</a></li>
+          <li><a href="hlou.html">Hlou</a></li>
+          <li><a href="zhourat.html">Zhourat</a></li>
+          <li><a href="jus.html">Jus</a></li>
+          <li><a href="artisanat.html">Artisanat</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -791,6 +1271,98 @@
   <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4c1.5.8 3.3 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.9 14.2c-.2.6-1.4 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-1 1-1.3.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.1.5.2.6.3.1.2.1.9-.1 1.5z"/></svg>
 </a>
 
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-head">
+    <h3>Panier</h3>
+    <button class="cart-close" id="closeCartBtn" type="button" aria-label="Fermer">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">0.00 TND</strong>
+    </div>
+    <div class="cart-actions">
+      <button class="btn btn-red" id="cartOrderBtn" type="button">Commander via formulaire</button>
+      <a href="https://wa.me/21622155054" class="btn btn-outline" id="cartWhatsappBtn" target="_blank" rel="noopener">Commander via WhatsApp</a>
+    </div>
+  </div>
+</aside>
+
+<div class="modal-overlay" id="orderModalOverlay" aria-hidden="true"></div>
+<div class="order-modal" id="orderModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-head">
+    <div>
+      <h3>Passer une commande</h3>
+      <p class="modal-sub">Remplissez ce formulaire pour valider votre commande.</p>
+    </div>
+    <button class="modal-close" id="closeOrderModalBtn" type="button" aria-label="Fermer">×</button>
+  </div>
+  <form id="orderForm">
+    <div class="order-grid">
+      <div class="order-field">
+        <label for="nom">الاسم الكامل</label>
+        <input id="nom" name="Nom" type="text" placeholder="مثال: محمد بن علي" required>
+      </div>
+      <div class="order-field">
+        <label for="tel">رقم الهاتف</label>
+        <input id="tel" name="Telephone" type="tel" placeholder="مثال: 22 123 456" required>
+      </div>
+      <div class="order-field">
+        <label for="produit">المنتج</label>
+        <select id="produit" name="Produit" required>
+          <option value="">اختر المنتج</option>
+          <option value="Huile d'Olive Vierge Extra">زيت زيتون بكر ممتاز (Huile d'Olive)</option>
+          <option value="Harissa Nabeulia">هريسة نابلية (Harissa Nabeulia)</option>
+          <option value="Sahlab Tounsi">سحلب تونسي (Sahlab Tounsi)</option>
+          <option value="Concentré de Tomate & Tomates Séchées">طماطم شمسية ومعجون تقليدي (Concentré Tomate)</option>
+          <option value="Mélange d'Épices Tabil & Karawya">توابل تونسية - تابل وكروية (Épices Tabil)</option>
+          <option value="Olives Vertes Assaisonnées">زيتون أخضر متبل (Olives Vertes)</option>
+          <option value="Bsissa Tunisienne aux Fruits Secs">بسيسة تونسية بالفواكه الجافة (Bsissa)</option>
+          <option value="Miel Naturel Pur">عسل طبيعي ممتاز (Miel Naturel)</option>
+          <option value="Mloukhia Tunisienne Séchée">ملوخية تونسية مجففة (Mloukhia)</option>
+          <option value="Couscous Tunisien Artisanal">كسكسي تونسي تقليدي (Couscous)</option>
+          <option value="Halwa Chamia au Pistache">حلوى شامية بالفستق (Chamia)</option>
+          <option value="Zrir Tounsi Traditionnel">زرير تونسي بالجلجلان واللوز (Zrir Tounsi)</option>
+          <option value="Bourghol Tounsi Artisanal">برغل تونسي تقليدي (Bourghol)</option>
+          <option value="Mhammsa Tunisienne Traditionnelle">محمصة تونسية تقليدية (Mhammsa)</option>
+          <option value="Slata Mechouia Artisanal">سلطة مشوية تونسية (Slata Mechouia)</option>
+        </select>
+      </div>
+      <div class="order-field">
+        <label for="format">الحجم</label>
+        <select id="format" name="Format" required>
+          <option value="">اختر الحجم</option>
+          <option value="1 Litre">1 لتر (1 Litre)</option>
+          <option value="10 Litres">10 لتر (10 Litres)</option>
+          <option value="20 Litres">20 لتر (20 Litres)</option>
+          <option value="250g">250 غرام (250g)</option>
+          <option value="350g">350 غرام (350g)</option>
+          <option value="500g">500 غرام (500g)</option>
+          <option value="700g">700 غرام (700g)</option>
+          <option value="1kg">1 كغ (1kg)</option>
+          <option value="2kg">2 كغ (2kg)</option>
+          <option value="5kg">5 كغ (5kg)</option>
+        </select>
+      </div>
+      <div class="order-field">
+        <label for="qte">الكمية</label>
+        <input id="qte" name="Quantite" type="number" min="1" value="1" required>
+      </div>
+      <div class="order-field">
+        <label for="lieu">عنوان التسليم</label>
+        <input id="lieu" name="Lieu" type="text" placeholder="مثال: نابل، تونس..." required>
+      </div>
+    </div>
+    <div class="order-actions">
+      <button class="btn btn-red" id="orderSubmitBtn" type="submit">Valider la commande</button>
+      <a href="https://wa.me/21622155054" class="btn btn-outline" target="_blank" rel="noopener">Commander via WhatsApp</a>
+    </div>
+    <p class="order-status" id="orderStatus" aria-live="polite"></p>
+  </form>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   const burger = document.getElementById('burgerBtn');
@@ -800,6 +1372,207 @@
     links.style.display = open ? 'none' : 'flex';
     links.style.cssText += open ? '' : 'position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px 32px;gap:18px;border-bottom:1px solid #e9e0d6;';
   });
+
+  // Cart setup
+  const cart = [];
+  const openCartBtn = document.getElementById('openCartBtn');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const cartCountBadge = document.getElementById('cartCountBadge');
+  const cartWhatsappBtn = document.getElementById('cartWhatsappBtn');
+  const cartOrderBtn = document.getElementById('cartOrderBtn');
+
+  function formatCurrency(amount) {
+    return `${amount.toFixed(2)} TND`;
+  }
+
+  function cartSummaryText() {
+    if (!cart.length) {
+      return 'Panier vide';
+    }
+    return cart.map((item) => `${item.name} (${item.format}) x${item.qty}`).join(', ');
+  }
+
+  function openCart() {
+    cartDrawer.classList.add('open');
+    cartOverlay.classList.add('open');
+    cartDrawer.setAttribute('aria-hidden', 'false');
+    cartOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeCart() {
+    cartDrawer.classList.remove('open');
+    cartOverlay.classList.remove('open');
+    cartDrawer.setAttribute('aria-hidden', 'true');
+    cartOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function updateWhatsappLink() {
+    const summary = cartSummaryText();
+    const message = `Bonjour, je souhaite commander: ${summary}`;
+    cartWhatsappBtn.href = `https://wa.me/21622155054?text=${encodeURIComponent(message)}`;
+  }
+
+  function renderCart() {
+    const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    const totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    cartCountBadge.textContent = String(totalCount);
+    cartTotalEl.textContent = formatCurrency(totalAmount);
+
+    if (!cart.length) {
+      cartItemsEl.innerHTML = '<p class="cart-empty">Votre panier est vide. Ajoutez un produit pour commencer.</p>';
+      updateWhatsappLink();
+      return;
+    }
+
+    cartItemsEl.innerHTML = cart.map((item) => `
+      <article class="cart-item" data-id="${item.id}">
+        <p class="cart-item-title">${item.name}</p>
+        <p class="cart-item-sub">${item.format} • ${item.price > 0 ? formatCurrency(item.price) : 'Prix a venir'}</p>
+        <div class="cart-item-row">
+          <div class="cart-qty">
+            <button type="button" data-action="dec" data-id="${item.id}">-</button>
+            <span>${item.qty}</span>
+            <button type="button" data-action="inc" data-id="${item.id}">+</button>
+          </div>
+          <button class="cart-remove" type="button" data-action="remove" data-id="${item.id}">Supprimer</button>
+        </div>
+      </article>
+    `).join('');
+
+    updateWhatsappLink();
+  }
+
+  function addToCart(product) {
+    const found = cart.find((item) => item.id === product.id);
+    if (found) {
+      found.qty += product.qty;
+    } else {
+      cart.push({ ...product });
+    }
+    renderCart();
+    openCart();
+  }
+
+  function mutateItem(itemId, action) {
+    const idx = cart.findIndex((item) => item.id === itemId);
+    if (idx === -1) return;
+
+    if (action === 'inc') {
+      cart[idx].qty += 1;
+    }
+    if (action === 'dec') {
+      cart[idx].qty -= 1;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+    }
+    if (action === 'remove') {
+      cart.splice(idx, 1);
+    }
+
+    renderCart();
+  }
+
+  document.querySelectorAll('.add-to-cart-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.product-card');
+      const activeFormatBtn = card.querySelector('.format-option.active');
+      const qtyInput = card.querySelector('.product-qty-input');
+      const selectedFormat = activeFormatBtn ? activeFormatBtn.dataset.format : '';
+      const selectedQty = Math.max(1, Number(qtyInput ? qtyInput.value : 1) || 1);
+      const product = {
+        id: `${card.dataset.productId}-${selectedFormat}`,
+        name: card.dataset.productName,
+        format: selectedFormat,
+        price: Number(card.dataset.productPrice || 0),
+        qty: selectedQty
+      };
+      addToCart(product);
+      if (qtyInput) qtyInput.value = '1';
+    });
+  });
+
+  document.querySelectorAll('.format-options').forEach((group) => {
+    group.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
+      if (!target.classList.contains('format-option')) return;
+      group.querySelectorAll('.format-option').forEach((btn) => btn.classList.remove('active'));
+      target.classList.add('active');
+    });
+  });
+
+  cartItemsEl.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof HTMLElement)) return;
+    const action = target.dataset.action;
+    const itemId = target.dataset.id;
+    if (!action || !itemId) return;
+    mutateItem(itemId, action);
+  });
+
+  openCartBtn.addEventListener('click', openCart);
+  closeCartBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  // Order Modal Setup
+  const orderModal = document.getElementById('orderModal');
+  const orderModalOverlay = document.getElementById('orderModalOverlay');
+  const closeOrderModalBtn = document.getElementById('closeOrderModalBtn');
+
+  function openOrderModal() {
+    orderModal.classList.add('open');
+    orderModalOverlay.classList.add('open');
+    orderModal.setAttribute('aria-hidden', 'false');
+    orderModalOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeOrderModal() {
+    orderModal.classList.remove('open');
+    orderModalOverlay.classList.remove('open');
+    orderModal.setAttribute('aria-hidden', 'true');
+    orderModalOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  closeOrderModalBtn.addEventListener('click', closeOrderModal);
+  orderModalOverlay.addEventListener('click', closeOrderModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && orderModal.classList.contains('open')) {
+      closeOrderModal();
+    }
+  });
+
+  cartOrderBtn.addEventListener('click', () => {
+    const productSelect = document.getElementById('produit');
+    const formatSelect = document.getElementById('format');
+    const qteInput = document.getElementById('qte');
+
+    if (cart.length > 0) {
+      if (cart[0].name && productSelect.querySelector(`option[value="${cart[0].name}"]`)) {
+        productSelect.value = cart[0].name;
+      } else if (cart[0].name && cart[0].name.includes("Huile")) {
+        productSelect.value = "Huile d'Olive Vierge Extra";
+      } else if (cart[0].name && cart[0].name.includes("Harissa")) {
+        productSelect.value = "Harissa Nabeulia";
+      }
+      if (cart[0].format) {
+        formatSelect.value = cart[0].format;
+      }
+      if (cart[0].qty) {
+        qteInput.value = cart[0].qty;
+      }
+    }
+
+    closeCart();
+    openOrderModal();
+  });
+
+  renderCart();
 
   // EmailJS setup
   const EMAILJS_PUBLIC_KEY = 'NAJ4Veir8G-lfdliB';
@@ -817,8 +1590,8 @@
     '1 Litre': 35,
     '10 Litres': 320,
     '20 Litres': 620,
-    'Pot 350g': 8,
-    'Pot 700g': 14
+    '500g': 0,
+    '1kg': 0
   };
 
   function buildOrderId() {
@@ -853,52 +1626,56 @@
     orderSubmitBtn.textContent = 'Envoi en cours...';
 
     const customerName = document.getElementById('nom').value.trim();
-    const customerEmail = document.getElementById('email').value.trim();
     const customerPhone = document.getElementById('tel').value.trim();
     const product = document.getElementById('produit').value;
     const format = document.getElementById('format').value;
     const quantity = Number(document.getElementById('qte').value || 1);
     const customerAddress = document.getElementById('lieu').value.trim();
-    const message = document.getElementById('msg').value.trim();
 
     const orderId = buildOrderId();
     const unitPrice = formatPrices[format] || 0;
     const total = unitPrice * quantity;
-    const detailsLine = `${product} | ${format} | Qte: ${quantity} | PU: ${unitPrice} TND | Sous-total: ${total} TND`;
-    const items = message ? `${detailsLine}\nNote client: ${message}` : detailsLine;
+    const items = cart.length > 1 
+      ? cart.map(item => `${item.name} (${item.format}) x${item.qty}`).join(' | ') 
+      : `${product} | ${format} | Qte: ${quantity} | PU: ${unitPrice} TND | Total: ${total} TND`;
 
     const templateParams = {
       subject: `Nouvelle commande #${orderId}`,
       order_id: orderId,
       to_email: ORDER_RECEIVER_EMAIL,
       from_name: customerName,
-      reply_to: customerEmail,
+      reply_to: '',
       customer_name: customerName,
-      customer_email: customerEmail,
+      customer_email: '',
       customer_phone: customerPhone,
       customer_address: customerAddress,
       items,
-      total: total.toFixed(2)
+      total: total > 0 ? total.toFixed(2) : 'A definir'
     };
 
     try {
       const sent = await sendOrderWithFallback(templateParams);
-      orderStatus.textContent = 'Commande envoyee avec succes.';
+      orderStatus.textContent = 'Commande envoyee avec succes !';
       orderStatus.classList.add('ok');
       orderForm.reset();
       document.getElementById('qte').value = 1;
+      setTimeout(() => {
+        closeOrderModal();
+        orderStatus.textContent = '';
+        orderStatus.className = 'order-status';
+      }, 2500);
     } catch (error) {
       const errorCode = error && error.status ? `Code ${error.status}` : 'Code inconnu';
       const errorText = error && error.text ? error.text : 'Aucune precision retournee';
       const hint = (errorText || '').toLowerCase().includes('service id not found')
-        ? ' Verifiez le Service ID exact dans EmailJS (attention aux caracteres 0/O) puis remplacez la valeur dans EMAILJS_SERVICE_IDS.'
+        ? ' Verifiez le Service ID exact dans EmailJS.'
         : '';
       orderStatus.textContent = `Echec de l envoi (${errorCode}). ${errorText}.${hint}`;
       orderStatus.classList.add('err');
       console.error('EmailJS error:', error);
     } finally {
       orderSubmitBtn.disabled = false;
-      orderSubmitBtn.textContent = 'Envoyer la commande';
+      orderSubmitBtn.textContent = 'Valider la commande';
     }
   });
 </script>
