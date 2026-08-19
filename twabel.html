@@ -4,25 +4,310 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Twabel - التونسية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body{margin:0;font-family:Arial,sans-serif;background:#f9f5ef;color:#1f1a17;}
-  .wrap{max-width:900px;margin:0 auto;padding:28px 20px;}
-  .top{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
-  .top img{width:52px;height:52px;object-fit:contain;border-radius:8px;}
-  h1{margin:0 0 10px;font-size:40px;}
-  p{font-size:16px;line-height:1.7;max-width:700px;}
-  a{display:inline-block;margin-top:20px;background:#bc020e;color:#fff;text-decoration:none;padding:12px 18px;border-radius:6px;}
+  :root{
+    --white:#ffffff;--paper:#fbf7f2;--red:#bc020e;--red-deep:#7a0009;
+    --black:#161311;--ink:#2a221f;--gold:#b08a3e;--line:#e9e0d6;--maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.01em;}
+  .arabic{font-family:'Aref Ruqaa',serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--red);font-weight:600;display:inline-flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;font-family:'Jost',sans-serif;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-radius:2px;border:1.5px solid transparent;cursor:pointer;transition:all .25s ease;}
+  .btn-red{background:var(--red);color:var(--white);border-color:var(--red);}
+  .btn-red:hover{background:var(--red-deep);border-color:var(--red-deep);}
+  .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:var(--maxw);margin:0 auto;}
+  .logo-mark{display:flex;align-items:center;gap:12px;}
+  .logo-mark img{height:56px;width:56px;object-fit:contain;border-radius:10px;}
+  .logo-word{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--red);letter-spacing:.03em;line-height:1;}
+  .logo-word small{display:block;font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:.3em;color:var(--black);font-weight:500;text-transform:uppercase;margin-top:3px;}
+  .nav-links{display:flex;gap:38px;}
+  .nav-links a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--black);position:relative;padding:6px 0;}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+
+  .section{padding:104px 0;}
+  .section.alt{background:var(--paper);}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+  .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
+  .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
+  .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
+
+  .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
+  .product-card{border:1px solid #e5d9cb;border-radius:16px;background:#fff;overflow:hidden;display:flex;flex-direction:column;}
+  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);min-height:190px;padding:18px 14px;display:flex;justify-content:center;align-items:center;}
+  .product-media img{max-height:150px;width:auto;filter:drop-shadow(0 12px 16px rgba(0,0,0,.14));}
+  .p-tag{position:absolute;top:16px;left:16px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:7px 10px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.18);}
+  .product-body{padding:14px 14px 16px;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:15px;margin-bottom:4px;display:block;}
+  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
+  .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:var(--red);margin-bottom:3px;}
+  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
+  .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
+  .format-options{display:flex;gap:8px;flex-wrap:wrap;}
+  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11.5px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
+  .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
+  .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:8px 8px;font-family:'Jost',sans-serif;font-size:12px;color:var(--black);background:#fff;width:100%;}
+  .product-actions{display:flex;gap:10px;}
+  .product-actions .btn{padding:10px 14px;font-size:11px;}
+
+  footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
+  footer a{color:var(--gold);}
+
+  @media(max-width:960px){.nav-links{display:none;}.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:12px 12px 14px;}.product-body h3{font-size:18px;}.product-price{font-size:28px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="top">
-      <img src="logo.png" alt="Logo التونسية">
-      <strong>التونسية</strong>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="logo-mark">
+      <img src="logo.png" alt="التونسية">
+      <span class="logo-word">التونسية<small>Saveurs de Tunisie</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="twabel.html">Twabel</a></li>
+      <li><a href="hlou.html">Hlou</a></li>
+      <li><a href="zhourat.html">Zhourat</a></li>
+      <li><a href="jus.html">Jus</a></li>
+      <li><a href="artisanat.html">Artisanat</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Twabel</span>
+      <h2>Produits Traditionnels Tunisiens</h2>
+      <p>Retrouvez toute la richesse du terroir tunisien préparée selon les traditions ancestrales de nos régions.</p>
     </div>
-    <h1>Twabel</h1>
-    <p>Cette page est prete pour presenter vos produits Twabel. Vous pouvez maintenant ajouter vos articles, prix et descriptions ici.</p>
-    <a href="index.html">Retour a l accueil</a>
-  </main>
+    <div class="product-grid">
+
+      <article class="product-card" data-product-id="couscous-tunisien" data-product-name="Couscous Tunisien Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Roulé à la main</span>
+          <img src="kosksi.png" alt="Couscous Tunisien Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">كسكسي تونسي تقليدي</span>
+          <h3>Couscous Tunisien Artisanal</h3>
+          <p class="desc">Couscous traditionnel préparé et roulé à la main selon les méthodes ancestrales tunisiennes.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format couscous">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite couscous">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="bourghol-tounsi" data-product-name="Bourghol Tounsi Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Riche en fibres</span>
+          <img src="borghol.png" alt="Bourghol Tounsi Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">برغل تونسي تقليدي</span>
+          <h3>Bourghol Tounsi Artisanal</h3>
+          <p class="desc">Blé dur concassé préparé selon la tradition tunisienne, riche en fibres et valeurs nutritionnelles.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format bourghol">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bourghol">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="mhammsa-tunisienne" data-product-name="Mhammsa Tunisienne Traditionnelle" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Traditionnelle</span>
+          <img src="mhamsa.png" alt="Mhammsa Tunisienne Traditionnelle التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">محمصة تونسية تقليدية</span>
+          <h3>Mhammsa Tunisienne Traditionnelle</h3>
+          <p class="desc">Pâtes artisanales en petites plombs faites à base de semoule de blé dur de qualité supérieure.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mhammsa">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mhammsa">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="nwasser-tunisienne" data-product-name="Nwasser Tunisienne Traditionnelle" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Fait maison</span>
+          <img src="nwasser.png" alt="Nwasser Tunisienne Traditionnelle التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">نواصر تونسية تقليدية</span>
+          <h3>Nwasser Tunisienne Traditionnelle</h3>
+          <p class="desc">Pâtes artisanales carrées faites à base de semoule de blé dur de qualité supérieure.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format nwasser">
+              <button class="format-option active" type="button" data-format="1kg">1kg</button>
+              <button class="format-option" type="button" data-format="2kg">2kg</button>
+              <button class="format-option" type="button" data-format="5kg">5kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite nwasser">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="tabil-epices" data-product-name="Mélange d'Épices Tabil & Karawya" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Saveur Nabeulia</span>
+          <img src="tabil.png" alt="Épices Tabil التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">توابل تونسية (تابل وكروية)</span>
+          <h3>Mélange d'Épices Tabil & Karawya</h3>
+          <p class="desc">Mélange traditionnel tunisien de coriandre moulue, carvi, ail et piments doux.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format epices">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite epices">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="bsissa-fruits-secs" data-product-name="Bsissa Tunisienne aux Fruits Secs" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Recette Grand-Mère</span>
+          <img src="bsissa.jpg" alt="Bsissa Tunisienne التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">بسيسة تونسية بالفواكه الجافة</span>
+          <h3>Bsissa Tunisienne aux Fruits Secs</h3>
+          <p class="desc">Préparation artisanale aux céréales grillées, miels et mélange généreux de fruits secs.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format bsissa">
+              <button class="format-option active" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite bsissa">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="mloukhia-sechee" data-product-name="Mloukhia Tunisienne Séchée" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Spécialité</span>
+          <img src="mloukhia.png" alt="Mloukhia Tunisienne Séchée التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">ملوخية تونسية مجففة</span>
+          <h3>Mloukhia Tunisienne Séchée</h3>
+          <p class="desc">Poudre de mloukhia artisanale séchée naturellement et finement moulue, 100% pure.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mloukhia">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mloukhia">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-product-id="slata-mechouia" data-product-name="Slata Mechouia Artisanal" data-product-price="0">
+        <div class="product-media">
+          <span class="p-tag">Grillé au feu de bois</span>
+          <img src="slata_mechouia.png" alt="Slata Mechouia Artisanal التونسية">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">سلطة مشوية تونسية</span>
+          <h3>Slata Mechouia Artisanal</h3>
+          <p class="desc">Salade tunisienne aux piments et aubergines grillés au feu de bois, assaisonnée à l'huile d'olive.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options" aria-label="Format mechouia">
+              <button class="format-option active" type="button" data-format="350g">350g</button>
+              <button class="format-option" type="button" data-format="700g">700g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input class="product-qty-input" type="number" min="1" value="1" aria-label="Quantite mechouia">
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-red add-to-cart-btn" type="button">Ajouter au panier</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 التونسية — <a href="index.html">Retour a l'accueil</a></p>
+  </div>
+</footer>
+
 </body>
 </html>
