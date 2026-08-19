@@ -39,16 +39,39 @@
   .nav-cta .btn{padding:11px 22px;font-size:12px;}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:2px;background:var(--black);}
+  .cart-icon-btn{position:relative;background:none;border:none;cursor:pointer;font-size:26px;line-height:1;padding:4px;transition:transform .2s ease;}
+  .cart-icon-btn:hover{transform:scale(1.15);}
   .section{padding:104px 0;}
   .sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
   .sec-head .eyebrow{justify-content:center;margin-bottom:18px;}
   .sec-head h2{font-size:clamp(32px,4vw,46px);color:var(--black);margin-bottom:16px;}
   .sec-head p{color:#5c534d;font-size:15.5px;line-height:1.7;}
-  .coming-soon{text-align:center;padding:80px 0;color:#7a6f66;font-size:18px;}
+
+  .product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:start;}
+  .product-card{border:1px solid #e5d9cb;border-radius:16px;background:#fff;overflow:hidden;display:flex;flex-direction:column;height:100%;}
+  .product-media{position:relative;background:linear-gradient(160deg,var(--paper),#f4ede4);height:200px;padding:20px 16px;display:flex;justify-content:center;align-items:center;}
+  .product-media img{max-height:155px;max-width:90%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.14));}
+  .p-tag{position:absolute;top:12px;left:12px;z-index:3;background:var(--black);color:var(--white);border:1px solid rgba(176,138,62,.55);font-size:10px;letter-spacing:.13em;text-transform:uppercase;padding:6px 10px;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,.16);}
+  .product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
+  .product-body .arabic-tag{font-family:'Aref Ruqaa',serif;color:var(--red);font-size:16px;margin-bottom:4px;display:block;}
+  .product-body h3{font-size:22px;color:var(--black);margin-bottom:6px;line-height:1.15;}
+  .product-body .desc{color:#5c534d;font-size:13px;line-height:1.6;margin-bottom:10px;}
+  .product-price{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;color:var(--red);margin-bottom:3px;}
+  .product-price-note{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#776b62;font-weight:600;margin-bottom:10px;}
+  .product-config{display:grid;grid-template-columns:1fr 80px;gap:8px;margin-bottom:10px;}
+  .format-options{display:flex;gap:6px;flex-wrap:wrap;}
+  .format-option{border:1px solid #d9cec2;border-radius:8px;padding:6px 9px;font-family:'Jost',sans-serif;font-size:11px;color:var(--black);background:#fff;cursor:pointer;font-weight:600;}
+  .format-option.active{background:var(--black);color:#fff;border-color:var(--black);}
+  .product-config input{border:1px solid #d9cec2;border-radius:8px;padding:8px 8px;font-family:'Jost',sans-serif;font-size:12px;color:var(--black);background:#fff;width:100%;}
+  .product-actions{display:flex;gap:8px;margin-top:auto;align-items:center;}
+  .add-cart-btn{width:44px;height:44px;border-radius:50%;background:var(--red);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;line-height:1;box-shadow:0 4px 12px rgba(188,2,14,.3);transition:all .2s ease;position:relative;}
+  .add-cart-btn:hover{background:var(--red-deep);transform:scale(1.1);box-shadow:0 6px 16px rgba(188,2,14,.4);}
+  .add-cart-btn .plus{position:absolute;bottom:-1px;right:-1px;background:var(--black);color:#fff;width:18px;height:18px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;}
+
   footer{background:var(--black);color:#cfc6bb;padding:30px 0;text-align:center;font-size:13px;}
   footer a{color:var(--gold);}
-  @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}}
-  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.btn{width:100%;justify-content:center;}}
+  @media(max-width:960px){.nav-links{display:none;}.burger{display:flex;}.product-grid{grid-template-columns:repeat(2,1fr);}.product-media{height:180px;}.product-media img{max-height:130px;}}
+  @media(max-width:600px){.wrap{padding:0 20px;}.section{padding:70px 0;}.product-grid{grid-template-columns:1fr;}.product-body{padding:14px 14px 16px;}.product-body h3{font-size:20px;}.product-price{font-size:30px;}.btn{width:100%;justify-content:center;}.product-actions{width:100%;}.product-actions .btn{width:100%;}}
 </style>
 </head>
 <body>
@@ -70,7 +93,7 @@
       <li><a href="artisanat.html">Artisanat</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="index.html#produits" class="btn btn-outline">Panier</a>
+      <a href="index.html#produits" class="cart-icon-btn" aria-label="Panier">🛒</a>
       <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -83,7 +106,34 @@
       <h2>Douceurs & Gourmandises</h2>
       <p>Retrouvez toute la douceur des spécialités sucrées tunisiennes préparées selon les traditions ancestrales.</p>
     </div>
-    <div class="coming-soon">Produits bientôt disponibles.</div>
+    <div class="product-grid">
+
+      <article class="product-card">
+        <div class="product-media">
+          <span class="p-tag">Gourmandise</span>
+          <img src="ghraybet dro3.png" alt="Ghraybet Dro3">
+        </div>
+        <div class="product-body">
+          <span class="arabic-tag">غريبة الدرع</span>
+          <h3>Ghraybet Dro3</h3>
+          <p class="desc">Pâtisserie traditionnelle tunisienne croustillante aux amandes et noisettes, recouverte de sucre glace.</p>
+          <span class="product-price">00.00 TND</span>
+          <p class="product-price-note">Prix provisoire a mettre a jour</p>
+          <div class="product-config">
+            <div class="format-options">
+              <button class="format-option active" type="button" data-format="250g">250g</button>
+              <button class="format-option" type="button" data-format="500g">500g</button>
+              <button class="format-option" type="button" data-format="1kg">1kg</button>
+            </div>
+            <input type="number" min="1" value="1">
+          </div>
+          <div class="product-actions">
+            <button class="add-cart-btn" type="button" aria-label="Ajouter au panier">🛒<span class="plus">+</span></button>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
